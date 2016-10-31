@@ -24,7 +24,7 @@ gulp.task('compile:ts', function () {
 
 gulp.task('bundle:app', [ 'compile:ts' ], function () {
     var builder = new SystemjsBuilder('public', './src/systemjs.config.js');
-    return builder.buildStatic('app', 'js/index.js');
+    return builder.buildStatic('app', 'public/js/index.js');
 });
 
 gulp.task('bundle:vendor', [ 'copy:vendor' ], function () {
