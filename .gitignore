@@ -6,8 +6,11 @@ nbproject
 .idea
 .project
 .settings
+.vscode
 cache.properties
 build
 vendor/
 composer.phar
 application/logs/
+node_modules/
+public/js/
