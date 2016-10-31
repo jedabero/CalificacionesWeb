@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome to CodeIgniter</title>
 
 	<style type="text/css">
@@ -64,9 +65,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		box-shadow: 0 0 8px #D0D0D0;
 	}
 	</style>
+	<script src="js/lib/vendors.js"></script>
+	<script>
+		System.import('app').catch(function(err){ console.error(err); });
+	</script>
 </head>
 <body>
-
+<my-app>Loading...</my-app>
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
 
