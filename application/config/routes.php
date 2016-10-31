@@ -58,5 +58,5 @@ $route['translate_uri_dashes'] = FALSE;
 | API Routes
 | -------------------------------------------------------------------------
 */
-$route['api/v1/periodos/(:num)']['GET'] = 'api/v1/periodos/get/$1';
-$route['api/v1/periodos/(:num)']['POST'] = 'api/v1/periodos/save/$1';
+$route['api/periodos/(:num)']['GET'] = 'api/periodos/get/$1';
+$route['api/periodos/(:num)']['POST'] = 'api/periodos/save/$1';
