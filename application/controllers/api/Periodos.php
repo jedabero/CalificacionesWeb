@@ -5,7 +5,8 @@ class Periodos extends CI_Controller {
 
 	public function get($id)
 	{
-		echo $id;
+		$this->load->database();
+		echo json_encode($this->db->get('periodos')->result_array());
 	}
 
 }
