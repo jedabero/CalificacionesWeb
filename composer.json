@@ -1,5 +1,10 @@
 {
 	"description" : "Calificaciones WEB",
+    "autoload": {
+        "psr-4": {
+            "Calificaciones\\":"src/Calificaciones"
+        }
+    },
 	"require": {
 		"php": ">=5.3.2",
 		"codeigniter/framework": "3.1.*"
