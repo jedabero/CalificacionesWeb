@@ -43,6 +43,7 @@ class Usuario
             $registro['nombres'],
             $registro['apellidos'],
             $registro['email'],
+            $registro['usuario'],
             $registro['estado'],
             $registro['id']
         );
