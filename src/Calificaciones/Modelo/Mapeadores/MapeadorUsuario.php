@@ -3,6 +3,7 @@
 namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Usuario;
+use Calificaciones\Modelo\DbAdaptador;
 
 /**
  * 
@@ -25,7 +26,7 @@ class MapeadorUsuario
         $registro = $this->adaptador->buscarUsuarioPorId($id);
 
         if ($registro == null) {
-            throw new \InvalidArguentException("Usuario #$id no existe");
+            throw new \InvalidArgumentException("Usuario #$id no existe");
         }
 
         return $this->mapeaRegistroAUsuario($registro);
@@ -33,6 +34,6 @@ class MapeadorUsuario
 
     private function mapeaRegistroAUsuario(array $registro): Usuario
     {
-        # code...
+        return Usuario::crear($registro);
     }
 }
