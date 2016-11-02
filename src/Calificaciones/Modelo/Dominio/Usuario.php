@@ -5,7 +5,7 @@ namespace Calificaciones\Modelo\Dominio;
 /**
  * 
  */
-class Usuario
+class Usuario implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -170,6 +170,19 @@ class Usuario
     public function setUsuario(string $usuario)
     {
         $this->usuario = $usuario;
+    }
+
+    function jsonSerialize()
+    {
+        return [
+            'identificacion' => $this->identificacion,
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'email' => $this->email,
+            'usuario' => $this->usuario,
+            'estado' => $this->estado,
+            'id' => $this->id
+        ];
     }
 
 
