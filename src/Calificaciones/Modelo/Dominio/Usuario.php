@@ -49,7 +49,7 @@ class Usuario
         );
     }
 
-    function __construct(string $identificacion, string $nombres, string $apellidos, string $email, string $usuario, int $estado = 1, mixed $id = null)
+    function __construct(string $identificacion, string $nombres, string $apellidos, string $email, string $usuario, int $estado = 1, $id = null)
     {
         $this->identificacion = $identificacion;
         $this->nombres = $nombres;

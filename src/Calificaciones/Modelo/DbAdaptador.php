@@ -19,12 +19,21 @@ class DbAdaptador
     }
 
     /**
+     *
+     * @return array|null
+     */
+    public function todosUsuarios()
+    {
+        return $this->db->get_where('usuarios')->result_array();
+    }
+
+    /**
     * @param int $id
     *
     * @return array|null
     */
     public function buscarUsuarioPorId(int $id)
     {
-        return $this->db->get_where('usuarios', ['id' => $id])->result_array();
+        return $this->db->get_where('usuarios', ['id' => $id])->row_array();
     }
 }

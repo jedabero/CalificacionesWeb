@@ -21,6 +21,21 @@ class MapeadorUsuario
         $this->adaptador = $adaptador;
     }
 
+    public function todos()
+    {
+        $registros = $this->adaptador->todosUsuarios();
+
+        if ($registros == null) {
+            throw new \InvalidArgumentException("No existen Usuarios");
+        }
+
+        $todos = [];
+        foreach ($registros as $registro) {
+            $todos[] = $this->mapeaRegistroAUsuario($registro);
+        }
+        return $todos;
+    }
+
     public function buscar($id): Usuario
     {
         $registro = $this->adaptador->buscarUsuarioPorId($id);
