@@ -3,27 +3,35 @@
 namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Usuario as ModeloUsuario;
-use Calificaciones\Modelo\Repositorios\Usuarios as RepositorioUsuarios;
+use Calificaciones\Modelo\DbAdaptador;
 
 /**
  * 
  */
 class Usuario
 {
+    /**
+     * @const string
+     */
+    const TABLA_USUARIOS = "usuarios";
     
     /**
-     * @var RepositorioUsuarios
+     * @var DbAdaptador
      */
-    private $repositorio;
+    private $adaptador;
 
-    function __construct(RepositorioUsuarios $repositorio)
+    function __construct(DbAdaptador $adaptador)
     {
-        $this->repositorio = $repositorio;
+        $this->adaptador = $adaptador;
     }
 
+    /**
+     *
+     * @return array|null
+     */
     public function todos()
     {
-        $registros = $this->repositorio->todos();
+        $registros = $this->adaptador->listar(self::TABLA_USUARIOS);
 
         if ($registros == null) {
             throw new \InvalidArgumentException("No existen Usuarios");
@@ -36,9 +44,14 @@ class Usuario
         return $todos;
     }
 
+    /**
+     * @param mixed $id
+     *
+     * @return ModeloUsuario
+     */
     public function buscar($id): ModeloUsuario
     {
-        $registro = $this->repositorio->buscar($id);
+        $registro = $this->adaptador->buscarPorId(self::TABLA_USUARIOS, $id);
 
         if ($registro == null) {
             throw new \InvalidArgumentException("Usuario #$id no existe");
@@ -47,9 +60,17 @@ class Usuario
         return $this->mapeaRegistroAUsuario($registro);
     }
 
+    /**
+     * @param ModeloUsuario $usuario
+     *
+     */
     public function guardar(ModeloUsuario $usuario)
     {
-        $this->repositorio->guardar((array) $usuario);
+        if (!is_null($usuario->getId())) {
+            $this->adaptador->actualizar(self::TABLA_USUARIOS, $usuario->toArray(), ['id' => $usuario->getId()]);
+        } else {
+            $this->adaptador->guardar(self::TABLA_USUARIOS, $usuario->toArray());
+        }
     }
 
     private function mapeaRegistroAUsuario(array $registro): ModeloUsuario
