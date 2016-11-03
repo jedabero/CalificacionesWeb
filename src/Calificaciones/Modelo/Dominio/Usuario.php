@@ -1,12 +1,12 @@
 <?php
 
 namespace Calificaciones\Modelo\Dominio;
-use Calificaciones\Modelo\Modelo;
+use Calificaciones\Modelo\ModeloBase;
 
 /**
  * 
  */
-class Usuario extends Modelo
+class Usuario extends ModeloBase
 {
     /**
      * @var string

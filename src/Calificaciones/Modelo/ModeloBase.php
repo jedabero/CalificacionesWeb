@@ -9,7 +9,7 @@
 namespace Calificaciones\Modelo;
 
 
-abstract class Modelo implements \JsonSerializable
+abstract class ModeloBase implements \JsonSerializable
 {
 
     /**

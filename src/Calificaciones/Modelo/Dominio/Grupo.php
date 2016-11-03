@@ -9,9 +9,9 @@
 namespace Calificaciones\Modelo\Dominio;
 
 
-use Calificaciones\Modelo\Modelo;
+use Calificaciones\Modelo\ModeloBase;
 
-class Grupo extends Modelo
+class Grupo extends ModeloBase
 {
     /**
      * @var string

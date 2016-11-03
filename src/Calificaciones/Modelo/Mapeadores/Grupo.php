@@ -9,9 +9,9 @@
 namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Grupo as ModeloGrupo;
-use Calificaciones\Modelo\DbAdaptador;
+use Calificaciones\Modelo\MapeadorBase;
 
-class Grupo
+class Grupo extends MapeadorBase
 {
     /**
      * @const string
@@ -19,22 +19,12 @@ class Grupo
     const TABLA = "grupos";
 
     /**
-     * @var DbAdaptador
-     */
-    private $adaptador;
-
-    function __construct(DbAdaptador $adaptador)
-    {
-        $this->adaptador = $adaptador;
-    }
-
-    /**
      *
      * @return array|null
      */
     public function todos()
     {
-        $registros = $this->adaptador->listar(self::TABLA);
+        $registros = $this->getAdaptador()->listar(self::TABLA);
 
         if ($registros == null) {
             throw new \InvalidArgumentException("No existen Grupos");
@@ -54,7 +44,7 @@ class Grupo
      */
     public function buscar($id): ModeloGrupo
     {
-        $registro = $this->adaptador->buscarPorId(self::TABLA, $id);
+        $registro = $this->getAdaptador()->buscarPorId(self::TABLA, $id);
 
         if ($registro == null) {
             throw new \InvalidArgumentException("Grupo #$id no existe");
@@ -70,9 +60,9 @@ class Grupo
     public function guardar(ModeloGrupo $grupo)
     {
         if (!is_null($grupo->getId())) {
-            $this->adaptador->actualizar(self::TABLA, $grupo->toArray(), ['id' => $grupo->getId()]);
+            $this->getAdaptador()->actualizar(self::TABLA, $grupo->toArray(), ['id' => $grupo->getId()]);
         } else {
-            $this->adaptador->guardar(self::TABLA, $grupo->toArray());
+            $this->getAdaptador()->guardar(self::TABLA, $grupo->toArray());
         }
     }
 
