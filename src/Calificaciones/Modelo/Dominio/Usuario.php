@@ -172,7 +172,7 @@ class Usuario implements \JsonSerializable
         $this->usuario = $usuario;
     }
 
-    function jsonSerialize()
+    public function toArray()
     {
         return [
             'identificacion' => $this->identificacion,
@@ -183,6 +183,16 @@ class Usuario implements \JsonSerializable
             'estado' => $this->estado,
             'id' => $this->id
         ];
+    }
+
+    function jsonSerialize()
+    {
+        return $this->toArray();
+    }
+
+    function __toString()
+    {
+        return json_encode($this);
     }
 
 

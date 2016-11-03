@@ -3,7 +3,7 @@
 namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Usuario;
-use Calificaciones\Modelo\DbAdaptador;
+use Calificaciones\Modelo\Repositorios\Usuarios as RepositorioUsuarios;
 
 /**
  * 
@@ -12,18 +12,18 @@ class MapeadorUsuario
 {
     
     /**
-     * @var DbAdaptador
+     * @var RepositorioUsuarios
      */
-    private $adaptador;
+    private $repositorio;
 
-    function __construct(DbAdaptador $adaptador)
+    function __construct(RepositorioUsuarios $repositorio)
     {
-        $this->adaptador = $adaptador;
+        $this->repositorio = $repositorio;
     }
 
     public function todos()
     {
-        $registros = $this->adaptador->todosUsuarios();
+        $registros = $this->repositorio->todos();
 
         if ($registros == null) {
             throw new \InvalidArgumentException("No existen Usuarios");
@@ -38,13 +38,18 @@ class MapeadorUsuario
 
     public function buscar($id): Usuario
     {
-        $registro = $this->adaptador->buscarUsuarioPorId($id);
+        $registro = $this->repositorio->buscar($id);
 
         if ($registro == null) {
             throw new \InvalidArgumentException("Usuario #$id no existe");
         }
 
         return $this->mapeaRegistroAUsuario($registro);
+    }
+
+    public function guardar(Usuario $usuario)
+    {
+        $this->repositorio->guardar((array) $usuario);
     }
 
     private function mapeaRegistroAUsuario(array $registro): Usuario
