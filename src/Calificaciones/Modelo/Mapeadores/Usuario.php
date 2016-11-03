@@ -13,7 +13,7 @@ class Usuario
     /**
      * @const string
      */
-    const TABLA_USUARIOS = "usuarios";
+    const TABLA = "usuarios";
     
     /**
      * @var DbAdaptador
@@ -31,7 +31,7 @@ class Usuario
      */
     public function todos()
     {
-        $registros = $this->adaptador->listar(self::TABLA_USUARIOS);
+        $registros = $this->adaptador->listar(self::TABLA);
 
         if ($registros == null) {
             throw new \InvalidArgumentException("No existen Usuarios");
@@ -39,7 +39,7 @@ class Usuario
 
         $todos = [];
         foreach ($registros as $registro) {
-            $todos[] = $this->mapeaRegistroAUsuario($registro);
+            $todos[] = $this->mapea($registro);
         }
         return $todos;
     }
@@ -51,13 +51,13 @@ class Usuario
      */
     public function buscar($id): ModeloUsuario
     {
-        $registro = $this->adaptador->buscarPorId(self::TABLA_USUARIOS, $id);
+        $registro = $this->adaptador->buscarPorId(self::TABLA, $id);
 
         if ($registro == null) {
             throw new \InvalidArgumentException("Usuario #$id no existe");
         }
 
-        return $this->mapeaRegistroAUsuario($registro);
+        return $this->mapea($registro);
     }
 
     /**
@@ -67,13 +67,13 @@ class Usuario
     public function guardar(ModeloUsuario $usuario)
     {
         if (!is_null($usuario->getId())) {
-            $this->adaptador->actualizar(self::TABLA_USUARIOS, $usuario->toArray(), ['id' => $usuario->getId()]);
+            $this->adaptador->actualizar(self::TABLA, $usuario->toArray(), ['id' => $usuario->getId()]);
         } else {
-            $this->adaptador->guardar(self::TABLA_USUARIOS, $usuario->toArray());
+            $this->adaptador->guardar(self::TABLA, $usuario->toArray());
         }
     }
 
-    private function mapeaRegistroAUsuario(array $registro): ModeloUsuario
+    private function mapea(array $registro): ModeloUsuario
     {
         return ModeloUsuario::crear($registro);
     }

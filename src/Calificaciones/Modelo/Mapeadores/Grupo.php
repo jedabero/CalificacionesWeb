@@ -37,12 +37,12 @@ class Grupo
         $registros = $this->adaptador->listar(self::TABLA);
 
         if ($registros == null) {
-            throw new \InvalidArgumentException("No existen Usuarios");
+            throw new \InvalidArgumentException("No existen Grupos");
         }
 
         $todos = [];
         foreach ($registros as $registro) {
-            $todos[] = $this->mapeaRegistroAGrupo($registro);
+            $todos[] = $this->mapea($registro);
         }
         return $todos;
     }
@@ -57,10 +57,10 @@ class Grupo
         $registro = $this->adaptador->buscarPorId(self::TABLA, $id);
 
         if ($registro == null) {
-            throw new \InvalidArgumentException("Usuario #$id no existe");
+            throw new \InvalidArgumentException("Grupo #$id no existe");
         }
 
-        return $this->mapeaRegistroAGrupo($registro);
+        return $this->mapea($registro);
     }
 
     /**
@@ -76,7 +76,7 @@ class Grupo
         }
     }
 
-    private function mapeaRegistroAGrupo(array $registro): ModeloGrupo
+    private function mapea(array $registro): ModeloGrupo
     {
         return ModeloGrupo::crear($registro);
     }
