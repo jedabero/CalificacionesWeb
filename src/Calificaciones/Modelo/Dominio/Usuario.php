@@ -2,6 +2,7 @@
 
 namespace Calificaciones\Modelo\Dominio;
 use Calificaciones\Modelo\ModeloBase;
+use Calificaciones\Soporte\Coleccion;
 
 /**
  * 
@@ -28,6 +29,10 @@ class Usuario extends ModeloBase
      * @var string
      */
     private $usuario;
+    /**
+     * @var Coleccion
+     */
+    private $grupos;
 
     public static function crear(array $registro): Usuario
     {
@@ -50,6 +55,8 @@ class Usuario extends ModeloBase
         $this->apellidos = $apellidos;
         $this->email = $email;
         $this->usuario = $usuario;
+
+        $this->grupos = Coleccion::crear();
     }
 
     /**
@@ -132,6 +139,22 @@ class Usuario extends ModeloBase
         $this->usuario = $usuario;
     }
 
+    /**
+     * @return Coleccion
+     */
+    public function getGrupos(): Coleccion
+    {
+        return $this->grupos;
+    }
+
+    /**
+     * @param Coleccion $grupos
+     */
+    public function setGrupos(Coleccion $grupos)
+    {
+        $this->grupos = Coleccion::crear($grupos);
+    }
+
     public function toArray()
     {
         return array_merge(parent::toArray(), [
@@ -139,7 +162,8 @@ class Usuario extends ModeloBase
             'nombres' => $this->nombres,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
-            'usuario' => $this->usuario
+            'usuario' => $this->usuario,
+            'grupos' => $this->getGrupos()
         ]);
     }
 }
