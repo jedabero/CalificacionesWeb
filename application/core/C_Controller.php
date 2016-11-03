@@ -1,13 +1,14 @@
 <?php
-
-use Calificaciones\Modelo\DbAdaptador;
-
 /**
  * Created by PhpStorm.
  * User: jedabero
  * Date: 3/11/16
  * Time: 07:21 AM
  */
+
+use Calificaciones\Modelo\DbAdaptador;
+
+
 class C_Controller extends CI_Controller
 {
     /**
