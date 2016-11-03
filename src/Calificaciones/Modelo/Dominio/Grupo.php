@@ -41,7 +41,7 @@ class Grupo extends ModeloBase
     function __construct(string $nombre, string $usuario_id, int $estado = 1, $id = null)
     {
         parent::__construct($estado, $id);
-        $this->nombres = $nombre;
+        $this->nombre = $nombre;
         $this->usuario_id = $usuario_id;
     }
 

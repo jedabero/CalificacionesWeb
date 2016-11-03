@@ -5,6 +5,7 @@ namespace Calificaciones\Modelo\Mapeadores;
 use Calificaciones\Modelo\Dominio\Usuario as ModeloUsuario;
 use Calificaciones\Modelo\MapeadorBase;
 use Calificaciones\Modelo\Mapeadores\Grupo as MapeadorGrupo;
+use Calificaciones\Soporte\Coleccion;
 
 /**
  * 
@@ -19,7 +20,7 @@ class Usuario extends MapeadorBase
     /**
      * @param boolean $cargarGrupos
      *
-     * @return array|null
+     * @return Coleccion|null
      */
     public function todos($cargarGrupos = true)
     {
@@ -34,8 +35,8 @@ class Usuario extends MapeadorBase
             $mapeador = new MapeadorGrupo($this->getAdaptador());
         }
 
-        $todos = [];
-        foreach ($registros as $registro) {
+        $todos = Coleccion::crear();
+        foreach ($registros as $registro) { //TODO: optimizar; cargar todos los grupos de los usuarios y luego relacionar
             $usuario = $this->mapea($registro);
             if ($cargarGrupos) {
                 $usuario->setGrupos($mapeador->todos($usuario->getId()));

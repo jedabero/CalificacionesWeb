@@ -10,6 +10,7 @@ namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Grupo as ModeloGrupo;
 use Calificaciones\Modelo\MapeadorBase;
+use Calificaciones\Soporte\Coleccion;
 
 class Grupo extends MapeadorBase
 {
@@ -21,7 +22,7 @@ class Grupo extends MapeadorBase
     /**
      * @param mixed $usuario_id
      *
-     * @return array|null
+     * @return Coleccion|null
      */
     public function todos($usuario_id = null)
     {
@@ -32,7 +33,7 @@ class Grupo extends MapeadorBase
             throw new \InvalidArgumentException("No existen Grupos");
         }
 
-        $todos = [];
+        $todos = Coleccion::crear();
         foreach ($registros as $registro) {
             $todos[] = $this->mapea($registro);
         }
