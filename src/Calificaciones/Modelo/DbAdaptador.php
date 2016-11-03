@@ -25,7 +25,7 @@ class DbAdaptador
      */
     public function listar($tabla)
     {
-        return $this->db->get_where($tabla)->result_array();
+        return $this->db->get($tabla)->result_array();
     }
 
     /**

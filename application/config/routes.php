@@ -58,10 +58,11 @@ $route['translate_uri_dashes'] = FALSE;
 | API Routes
 | -------------------------------------------------------------------------
 */
-$route['api/usuarios']['GET'] = 'api/usuarios/list/$1';
-$route['api/usuarios/(:num)']['GET'] = 'api/usuarios/get/$1';
-$route['api/usuarios/(\w+)']['GET'] = 'api/usuarios/get/$1';
-$route['api/usuarios/(:num)']['POST'] = 'api/usuarios/save/$1';
-$route['api/usuarios/(\w+)']['POST'] = 'api/usuarios/save/$1';
+$route['api/usuarios']['GET'] = 'api/usuarios/listar';
+$route['api/usuarios']['POST'] = 'api/usuarios/guardar';
+$route['api/usuarios/(:num)']['GET'] = 'api/usuarios/buscar/$1';
+$route['api/usuarios/(\w+)']['GET'] = 'api/usuarios/buscar/$1';
+$route['api/usuarios/(:num)']['POST'] = 'api/usuarios/guardar/$1';
+$route['api/usuarios/(\w+)']['POST'] = 'api/usuarios/guardar/$1';
 $route['api/periodos/(:num)']['GET'] = 'api/periodos/get/$1';
 $route['api/periodos/(:num)']['POST'] = 'api/periodos/save/$1';
