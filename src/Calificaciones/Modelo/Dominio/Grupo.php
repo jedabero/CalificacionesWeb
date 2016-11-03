@@ -9,16 +9,10 @@
 namespace Calificaciones\Modelo\Dominio;
 
 
-class Grupo implements \JsonSerializable
+use Calificaciones\Modelo\Modelo;
+
+class Grupo extends Modelo
 {
-    /**
-     * @var int|null
-     */
-    private $id;
-    /**
-     * @var int
-     */
-    private $estado;
     /**
      * @var string
      */
@@ -35,41 +29,8 @@ class Grupo implements \JsonSerializable
 
     function __construct(string $nombre, int $estado = 1, $id = null)
     {
+        parent::__construct($estado, $id);
         $this->nombres = $nombre;
-        $this->estado = $estado;
-        $this->id = $id;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getEstado(): int
-    {
-        return $this->estado;
-    }
-
-    /**
-     * @param int $estado
-     */
-    public function setEstado(int $estado)
-    {
-        $this->estado = $estado;
     }
 
     /**
@@ -90,21 +51,9 @@ class Grupo implements \JsonSerializable
 
     public function toArray()
     {
-        return [
-            'nombre' => $this->nombre,
-            'estado' => $this->estado,
-            'id' => $this->id
-        ];
-    }
-
-    function jsonSerialize()
-    {
-        return $this->toArray();
-    }
-
-    function __toString()
-    {
-        return json_encode($this);
+        return array_merge(parent::toArray(), [
+            'nombre' => $this->nombre
+        ]);
     }
 
 }

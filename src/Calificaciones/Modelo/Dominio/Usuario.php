@@ -1,20 +1,13 @@
 <?php
 
 namespace Calificaciones\Modelo\Dominio;
+use Calificaciones\Modelo\Modelo;
 
 /**
  * 
  */
-class Usuario implements \JsonSerializable
+class Usuario extends Modelo
 {
-    /**
-     * @var int|null
-     */
-    private $id;
-    /**
-     * @var int
-     */
-    private $estado;
     /**
      * @var string
      */
@@ -51,45 +44,12 @@ class Usuario implements \JsonSerializable
 
     function __construct(string $identificacion, string $nombres, string $apellidos, string $email, string $usuario, int $estado = 1, $id = null)
     {
+        parent::__construct($estado, $id);
         $this->identificacion = $identificacion;
         $this->nombres = $nombres;
         $this->apellidos = $apellidos;
         $this->email = $email;
         $this->usuario = $usuario;
-        $this->estado = $estado;
-        $this->id = $id;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getEstado(): int
-    {
-        return $this->estado;
-    }
-
-    /**
-     * @param int $estado
-     */
-    public function setEstado(int $estado)
-    {
-        $this->estado = $estado;
     }
 
     /**
@@ -174,26 +134,12 @@ class Usuario implements \JsonSerializable
 
     public function toArray()
     {
-        return [
+        return array_merge(parent::toArray(), [
             'identificacion' => $this->identificacion,
             'nombres' => $this->nombres,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
-            'usuario' => $this->usuario,
-            'estado' => $this->estado,
-            'id' => $this->id
-        ];
+            'usuario' => $this->usuario
+        ]);
     }
-
-    function jsonSerialize()
-    {
-        return $this->toArray();
-    }
-
-    function __toString()
-    {
-        return json_encode($this);
-    }
-
-
 }
