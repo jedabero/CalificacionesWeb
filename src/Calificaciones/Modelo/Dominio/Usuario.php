@@ -148,9 +148,9 @@ class Usuario extends ModeloBase
     }
 
     /**
-     * @param Coleccion $grupos
+     * @param array|Coleccion $grupos
      */
-    public function setGrupos(Coleccion $grupos)
+    public function setGrupos($grupos)
     {
         $this->grupos = Coleccion::crear($grupos);
     }

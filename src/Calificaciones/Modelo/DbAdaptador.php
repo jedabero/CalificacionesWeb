@@ -20,11 +20,15 @@ class DbAdaptador
 
     /**
      * @param string $tabla
+     * @param array $condiciones
      *
      * @return array|null
      */
-    public function listar($tabla)
+    public function listar(string $tabla, $condiciones = [])
     {
+        if (count($condiciones) > 0) {
+            $this->db->where($condiciones);
+        }
         return $this->db->get($tabla)->result_array();
     }
 
@@ -34,7 +38,7 @@ class DbAdaptador
      *
      * @return array|null
      */
-    public function buscarPorId($tabla, int $id)
+    public function buscarPorId(string $tabla, int $id)
     {
         return $this->db->get_where($tabla, ['id' => $id])->row_array();
     }
@@ -44,7 +48,7 @@ class DbAdaptador
      * @param array $datos
      *
      */
-    public function guardar($tabla, array $datos)
+    public function guardar(string $tabla, array $datos)
     {
         $this->db->insert($tabla, $datos);
     }
@@ -55,7 +59,7 @@ class DbAdaptador
      * @param array $condicion
      *
      */
-    public function actualizar($tabla, array $datos, array $condicion)
+    public function actualizar(string $tabla, array $datos, array $condicion)
     {
         $this->db->update($tabla, $datos, $condicion);
     }

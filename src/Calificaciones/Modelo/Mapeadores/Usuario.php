@@ -4,6 +4,7 @@ namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Usuario as ModeloUsuario;
 use Calificaciones\Modelo\MapeadorBase;
+use Calificaciones\Modelo\Mapeadores\Grupo as MapeadorGrupo;
 
 /**
  * 
@@ -16,10 +17,11 @@ class Usuario extends MapeadorBase
     const TABLA = "usuarios";
 
     /**
+     * @param boolean $cargarGrupos
      *
      * @return array|null
      */
-    public function todos()
+    public function todos($cargarGrupos = true)
     {
         $registros = $this->getAdaptador()->listar(self::TABLA);
 
@@ -27,19 +29,29 @@ class Usuario extends MapeadorBase
             throw new \InvalidArgumentException("No existen Usuarios");
         }
 
+        $mapeador = null;
+        if ($cargarGrupos) {
+            $mapeador = new MapeadorGrupo($this->getAdaptador());
+        }
+
         $todos = [];
         foreach ($registros as $registro) {
-            $todos[] = $this->mapea($registro);
+            $usuario = $this->mapea($registro);
+            if ($cargarGrupos) {
+                $usuario->setGrupos($mapeador->todos($usuario->getId()));
+            }
+            $todos[] = $usuario;
         }
         return $todos;
     }
 
     /**
      * @param mixed $id
+     * @param boolean $cargarGrupos
      *
      * @return ModeloUsuario
      */
-    public function buscar($id): ModeloUsuario
+    public function buscar($id, $cargarGrupos = true): ModeloUsuario
     {
         $registro = $this->getAdaptador()->buscarPorId(self::TABLA, $id);
 
@@ -47,7 +59,14 @@ class Usuario extends MapeadorBase
             throw new \InvalidArgumentException("Usuario #$id no existe");
         }
 
-        return $this->mapea($registro);
+        $usuario = $this->mapea($registro);
+
+        if ($cargarGrupos) {
+            $mapeador = new MapeadorGrupo($this->getAdaptador());
+            $usuario->setGrupos($mapeador->todos($id));
+        }
+
+        return $usuario;
     }
 
     /**

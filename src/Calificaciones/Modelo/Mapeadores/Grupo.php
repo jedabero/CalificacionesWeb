@@ -19,12 +19,14 @@ class Grupo extends MapeadorBase
     const TABLA = "grupos";
 
     /**
+     * @param mixed $usuario_id
      *
      * @return array|null
      */
-    public function todos()
+    public function todos($usuario_id = null)
     {
-        $registros = $this->getAdaptador()->listar(self::TABLA);
+        $condicion = is_null($usuario_id) ? null : ['usuario_id' => $usuario_id];
+        $registros = $this->getAdaptador()->listar(self::TABLA, $condicion);
 
         if ($registros == null) {
             throw new \InvalidArgumentException("No existen Grupos");
