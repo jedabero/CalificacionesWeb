@@ -2,13 +2,13 @@
 
 namespace Calificaciones\Modelo\Mapeadores;
 
-use Calificaciones\Modelo\Dominio\Usuario;
+use Calificaciones\Modelo\Dominio\Usuario as ModeloUsuario;
 use Calificaciones\Modelo\Repositorios\Usuarios as RepositorioUsuarios;
 
 /**
  * 
  */
-class MapeadorUsuario
+class Usuario
 {
     
     /**
@@ -36,7 +36,7 @@ class MapeadorUsuario
         return $todos;
     }
 
-    public function buscar($id): Usuario
+    public function buscar($id): ModeloUsuario
     {
         $registro = $this->repositorio->buscar($id);
 
@@ -47,13 +47,13 @@ class MapeadorUsuario
         return $this->mapeaRegistroAUsuario($registro);
     }
 
-    public function guardar(Usuario $usuario)
+    public function guardar(ModeloUsuario $usuario)
     {
         $this->repositorio->guardar((array) $usuario);
     }
 
-    private function mapeaRegistroAUsuario(array $registro): Usuario
+    private function mapeaRegistroAUsuario(array $registro): ModeloUsuario
     {
-        return Usuario::crear($registro);
+        return ModeloUsuario::crear($registro);
     }
 }

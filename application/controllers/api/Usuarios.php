@@ -1,7 +1,7 @@
 <?php
 
 use Calificaciones\Modelo\DbAdaptador;
-use Calificaciones\Modelo\Mapeadores\MapeadorUsuario;
+use Calificaciones\Modelo\Mapeadores\Usuario as MapeadorUsuario;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
