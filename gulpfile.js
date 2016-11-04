@@ -10,6 +10,10 @@ gulp.task('clean:css:lib', function () {
     return del('public/css/lib/*');
 });
 
+gulp.task('clean:css', function () {
+    return del([ 'public/css/*', '!public/css/lib' ]);
+});
+
 gulp.task('clean:js:lib', function () {
     return del('public/js/lib/*');
 });
@@ -63,6 +67,14 @@ gulp.task('bundle:css:vendor', function () {
     ])
         .pipe(concat('vendors.css'))
         .pipe(gulp.dest('public/css/lib'));
+});
+
+gulp.task('bundle:css:app', function () {
+    return gulp.src([
+        'src/css/**/*'
+    ])
+        .pipe(concat('estilos.css'))
+        .pipe(gulp.dest('public/css/'));
 });
 
 gulp.task('clean', [ 'clean:js:lib', 'clean:js' ]);
