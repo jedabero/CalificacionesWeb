@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome to CodeIgniter</title>
-
-	<script src="js/lib/vendors.js"></script>
+    <link rel="stylesheet" href="css/lib/vendors.css">
+    <script src="js/lib/vendors.js"></script>
 	<script>
 		System.import('app').catch(function(err){ console.error(err); });
 	</script>

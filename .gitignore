@@ -14,3 +14,4 @@ composer.phar
 application/logs/
 node_modules/
 public/js/
+public/css/

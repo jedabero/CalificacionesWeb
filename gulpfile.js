@@ -6,6 +6,10 @@ var ts = require('gulp-typescript');
 var tsconfig = require('./tsconfig.json');
 var SystemjsBuilder = require('systemjs-builder');
 
+gulp.task('clean:css:lib', function () {
+    return del('public/css/lib/*');
+});
+
 gulp.task('clean:js:lib', function () {
     return del('public/js/lib/*');
 });
@@ -29,6 +33,8 @@ gulp.task('bundle:app', [ 'compile:ts' ], function () {
 
 gulp.task('bundle:vendor', [ 'copy:vendor' ], function () {
     return gulp.src([
+        'node_modules/jquery/dist/jquery.slim.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/core-js/client/shim.min.js',
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js',
@@ -48,6 +54,15 @@ gulp.task('copy:vendor', function () {
     
     return gulp.src('node_modules/angular-in-memory-web-api/bundles/*')
     .pipe(gulp.dest('public/js/lib/angular-in-memory-web-api/bundles'));
+});
+
+gulp.task('bundle:css:vendor', function () {
+    return gulp.src([
+        'node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+    ])
+        .pipe(concat('vendors.css'))
+        .pipe(gulp.dest('public/css/lib'));
 });
 
 gulp.task('clean', [ 'clean:js:lib', 'clean:js' ]);
