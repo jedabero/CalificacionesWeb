@@ -23,6 +23,8 @@ gulp.task('clean:js', function () {
 });
 
 gulp.task('compile:ts', function () {
+    gulp.src('src/app/**/*.html').pipe(gulp.dest('public/js'));
+    gulp.src('src/app/**/*.css').pipe(gulp.dest('public/js'));
     return gulp.src('src/app/**/*.ts')
         .pipe(srcmaps.init())
         .pipe(ts(tsconfig.compilerOptions))

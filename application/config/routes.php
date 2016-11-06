@@ -66,3 +66,6 @@ $route['api/usuarios/(:num)']['POST'] = 'api/usuarios/guardar/$1';
 $route['api/usuarios/(\w+)']['POST'] = 'api/usuarios/guardar/$1';
 $route['api/periodos/(:num)']['GET'] = 'api/periodos/get/$1';
 $route['api/periodos/(:num)']['POST'] = 'api/periodos/save/$1';
+
+$route['(:any)/(:any)'] = 'front';
+$route['(:any)'] = 'front';
