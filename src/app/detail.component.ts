@@ -33,6 +33,10 @@ export class DetailComponent implements OnInit{
         });
     }
 
+    save(): void {
+        this.service.update(this.heroe).then(() => this.goBack());
+    }
+
     goBack(): void {
         this.location.back();
     }
