@@ -1,7 +1,6 @@
 <?php
 
 use Calificaciones\Modelo\Mapeadores\Usuario as MapeadorUsuario;
-use Calificaciones\Modelo\Dominio\Usuario as Usuario;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -29,7 +28,7 @@ class Usuarios extends C_Controller {
     {
         $mapeador = new MapeadorUsuario($this->adaptador);
 
-        $usuario = Usuario::crear($this->json_input());
+        $usuario = $mapeador->mapea($this->json_input());
         $usuario->setId($id);
 
         $mapeador->guardar($usuario);

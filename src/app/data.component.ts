@@ -29,4 +29,12 @@ export class DataComponent implements OnInit {
     gotoDetail(): void {
         this.router.navigate([ '/detail', this.heroeSeleccionado.id ]);
     }
+    add(nombre: string): void {
+        nombre = nombre.trim();
+        if (!nombre) { return; }
+        this.service.create(nombre).then(heroe => {
+            this.heroes.push(heroe);
+            this.heroeSeleccionado = heroe;
+        })
+    }
 }

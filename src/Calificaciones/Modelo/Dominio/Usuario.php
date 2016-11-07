@@ -155,6 +155,11 @@ class Usuario extends ModeloBase
         $this->grupos = Coleccion::crear($grupos);
     }
 
+    public function estaGuardado(): boolean
+    {
+        return is_null($this->getId());
+    }
+
     public function toArray()
     {
         return array_merge(parent::toArray(), [

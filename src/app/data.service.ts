@@ -45,4 +45,12 @@ export class DataService {
             .catch(this.handleError);
     }
 
+    create(nombre: string): Promise<Heroe> {
+        return this.http
+            .post(this.dataUrl, JSON.stringify({nombre}), {headers: this.headers})
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
+
 }
