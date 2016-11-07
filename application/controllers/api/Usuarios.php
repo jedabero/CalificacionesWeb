@@ -29,7 +29,7 @@ class Usuarios extends C_Controller {
     {
         $mapeador = new MapeadorUsuario($this->adaptador);
 
-        $usuario = Usuario::crear($this->input->post());
+        $usuario = Usuario::crear($this->json_input());
         $usuario->setId($id);
 
         $mapeador->guardar($usuario);

@@ -26,6 +26,11 @@ class C_Controller extends CI_Controller
         }
     }
 
+    protected function json_input()
+    {
+        return json_decode($this->input->raw_input_stream, true);
+    }
+
     protected function salida_json($status, $datos)
     {
         $json = json_encode($datos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

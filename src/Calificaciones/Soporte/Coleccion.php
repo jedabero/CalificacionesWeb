@@ -87,4 +87,9 @@ class Coleccion implements \IteratorAggregate, \ArrayAccess, \Countable, \JsonSe
         return $this->elementos;
     }
 
+    function __toString()
+    {
+        return json_encode($this);
+    }
+
 }
