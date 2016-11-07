@@ -7,7 +7,7 @@ import { RouterModule, Routes }   from '@angular/router';
 
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
-import { DashboardComponent } from './dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 const routes: Routes = [
     {
