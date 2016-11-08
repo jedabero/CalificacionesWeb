@@ -7,7 +7,8 @@ import { RouterModule, Routes }   from '@angular/router';
 
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponente } from './login/login.componente';
 
 const routes: Routes = [
     {
@@ -15,11 +16,14 @@ const routes: Routes = [
         redirectTo: '/dashboard',
         pathMatch: 'full'
     }, {
-        path: 'heroes',
-        component: DataComponent
-    }, {
         path: 'dashboard',
         component: DashboardComponent
+    }, {
+        path: 'login',
+        component: LoginComponente
+    }, {
+        path: 'heroes',
+        component: DataComponent
     }, {
         path: 'detail/:id',
         component: DetailComponent
