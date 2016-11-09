@@ -7,8 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AutenticacionServicio } from './servicios/autenticacion.servicio';
-import { LoginComponente } from './login/login.componente';
+import { UsuariosServicio } from './servicios/usuarios.servicio';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponente } from './login/login.componente';
+import { RegistroComponente } from './registro/registro.componente';
+
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -25,11 +28,13 @@ import { DataService } from './data.service';
         AppComponent,
         DashboardComponent,
         LoginComponente,
+        RegistroComponente,
         DetailComponent,
         DataComponent
     ],
     providers: [
         AutenticacionServicio,
+        UsuariosServicio,
         DataService
     ],
     bootstrap: [ AppComponent ]
