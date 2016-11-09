@@ -77,11 +77,16 @@ class Usuario extends MapeadorBase
     public function guardar(ModeloUsuario $usuario)
     {
         $datos = $usuario->toArray();
+        $contrasena = hash('sha512', $datos['usuario'].$datos['contrasena']);
         unset($datos['grupos']);
         if (is_null($usuario->getId())) {
+            $datos['contrasena'] = $contrasena;
             $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
             $usuario->setId($id);
         } else {
+            unset($datos['contrasena']);
+            // $usuarioActual = $this->buscar($usuario->getId(), false);
+            // TODO: validar
             $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $usuario->getId()]);
         }
     }

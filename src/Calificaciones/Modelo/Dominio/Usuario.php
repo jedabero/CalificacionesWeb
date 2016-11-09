@@ -30,6 +30,10 @@ class Usuario extends ModeloBase
      */
     private $usuario;
     /**
+     * @var string
+     */
+    private $contrasena;
+    /**
      * @var Coleccion
      */
     private $grupos;
@@ -42,12 +46,13 @@ class Usuario extends ModeloBase
             $registro['apellidos'],
             $registro['email'],
             $registro['usuario'],
+            $registro['contrasena'],
             $registro['estado'],
             $registro['id']
         );
     }
 
-    function __construct(string $identificacion, string $nombres, string $apellidos, string $email, string $usuario, int $estado = 1, $id = null)
+    function __construct(string $identificacion, string $nombres, string $apellidos, string $email, string $usuario, string $contrasena, int $estado = 1, $id = null)
     {
         parent::__construct($estado, $id);
         $this->identificacion = $identificacion;
@@ -55,6 +60,7 @@ class Usuario extends ModeloBase
         $this->apellidos = $apellidos;
         $this->email = $email;
         $this->usuario = $usuario;
+        $this->contrasena = $contrasena;
 
         $this->grupos = Coleccion::crear();
     }
@@ -140,6 +146,22 @@ class Usuario extends ModeloBase
     }
 
     /**
+     * @return string
+     */
+    public function getContrasena(): string
+    {
+        return $this->contrasena;
+    }
+
+    /**
+     * @param string $contrasena
+     */
+    public function setContrasena(string $contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
+
+    /**
      * @return Coleccion
      */
     public function getGrupos(): Coleccion
@@ -168,6 +190,7 @@ class Usuario extends ModeloBase
             'apellidos' => $this->apellidos,
             'email' => $this->email,
             'usuario' => $this->usuario,
+            'contrasena' => $this->contrasena,
             'grupos' => $this->getGrupos()
         ]);
     }
