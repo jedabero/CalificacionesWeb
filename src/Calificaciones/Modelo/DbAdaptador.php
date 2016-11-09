@@ -47,10 +47,12 @@ class DbAdaptador
      * @param string $tabla
      * @param array $datos
      *
+     * @return int the inserted id
      */
     public function guardar(string $tabla, array $datos)
     {
         $this->db->insert($tabla, $datos);
+        return $this->db->insert_id();
     }
 
     /**

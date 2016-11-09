@@ -78,10 +78,11 @@ class Usuario extends MapeadorBase
     {
         $datos = $usuario->toArray();
         unset($datos['grupos']);
-        if (!is_null($usuario->getId())) {
-            $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $usuario->getId()]);
+        if (is_null($usuario->getId())) {
+            $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
+            $usuario->setId($id);
         } else {
-            $this->getAdaptador()->guardar(self::TABLA, $datos);
+            $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $usuario->getId()]);
         }
     }
 

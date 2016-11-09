@@ -12,7 +12,7 @@ class Usuarios extends C_Controller {
 
         $users = $mapeador->todos();
 
-        $this->salida_json(200, $users);
+        $this->salida_json(200, [ 'success' => true, 'usuarios' => $users ]);
     }
 
 	public function buscar($id)
@@ -21,7 +21,7 @@ class Usuarios extends C_Controller {
 
         $user = $mapeador->buscar($id);
 
-		$this->salida_json(200, $user);
+		$this->salida_json(200, [ 'success' => true, 'usuario' => $user ]);
 	}
 
     public function guardar($id = null)
@@ -32,6 +32,8 @@ class Usuarios extends C_Controller {
         $usuario->setId($id);
 
         $mapeador->guardar($usuario);
+
+        $this->salida_json(200, [ 'success' => true, 'id' => $usuario->getId() ]);
 	}
 
 }
