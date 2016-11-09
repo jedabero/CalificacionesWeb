@@ -47,8 +47,8 @@ class Usuario extends ModeloBase
             $registro['email'],
             $registro['usuario'],
             $registro['contrasena'],
-            $registro['estado'],
-            $registro['id']
+            array_key_exists('estado', $registro) ? $registro['estado'] : 1,
+            array_key_exists('id', $registro) ? $registro['id'] : null
         );
     }
 
