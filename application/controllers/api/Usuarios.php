@@ -20,7 +20,7 @@ class Usuarios extends C_Controller {
 
     public function listar()
     {
-        $users = $this->mapeador->todos();
+        $users = $this->mapeador->todos(false);
 
         $this->salida_json(200, [ 'success' => true, 'usuarios' => $users ]);
     }

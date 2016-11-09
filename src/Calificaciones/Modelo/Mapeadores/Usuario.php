@@ -39,7 +39,12 @@ class Usuario extends MapeadorBase
         foreach ($registros as $registro) { //TODO: optimizar; cargar todos los grupos de los usuarios y luego relacionar
             $usuario = $this->mapea($registro);
             if ($cargarGrupos) {
-                $usuario->setGrupos($mapeador->todos($usuario->getId()));
+                try {
+                    $grupos = $mapeador->todos($usuario->getId());
+                } catch (\InvalidArgumentException $iae) {
+                    $grupos = null;
+                }
+                $usuario->setGrupos($grupos);
             }
             $todos[] = $usuario;
         }
