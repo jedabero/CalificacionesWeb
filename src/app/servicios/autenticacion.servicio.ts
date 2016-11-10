@@ -14,14 +14,16 @@ export class AutenticacionServicio {
 
     constructor(private http: Http) { }
 
-    login(usuario: string, constrasena: string) {
+    login(usuario: string, contrasena: string) {
         return this.http
-            .post(this.loginUrl, JSON.stringify({ usuario, constrasena }))
+            .post(this.loginUrl, JSON.stringify({ usuario, contrasena }))
             .map((response: Response) => {
-                let user = response.json();
-                if (user && user.token) {
-                    localStorage.setItem('usuario', JSON.stringify(user));
+                let data = response.json();
+                if (data && data.success && data.conectado) {
+                    localStorage.setItem('session_id', data.session_id);
+                    localStorage.setItem('usuario', data.usuario);
                 }
+                return { success: data.success, mensaje: data.mensaje };
             });
     }
 
@@ -30,6 +32,7 @@ export class AutenticacionServicio {
             .post(this.logoutUrl, null)
             .map((response: Response) => {
                 localStorage.removeItem('usuario');
+                localStorage.removeItem('session_id');
             });
     }
 }

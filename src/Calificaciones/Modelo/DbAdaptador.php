@@ -34,13 +34,24 @@ class DbAdaptador
 
     /**
      * @param string $tabla
+     * @param array $condiciones
+     *
+     * @return array|null
+     */
+    public function buscar(string $tabla, $condiciones = [])
+    {
+        return $this->db->get_where($tabla, $condiciones)->row_array();
+    }
+
+    /**
+     * @param string $tabla
      * @param int $id
      *
      * @return array|null
      */
     public function buscarPorId(string $tabla, int $id)
     {
-        return $this->db->get_where($tabla, ['id' => $id])->row_array();
+        return $this->buscar($tabla, ['id' => $id]);
     }
 
     /**

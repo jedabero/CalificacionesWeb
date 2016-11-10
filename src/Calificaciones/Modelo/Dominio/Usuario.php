@@ -162,6 +162,14 @@ class Usuario extends ModeloBase
     }
 
     /**
+     *
+     */
+    public function unsetContrasena()
+    {
+        unset($this->contrasena);
+    }
+
+    /**
      * @return Coleccion
      */
     public function getGrupos(): Coleccion

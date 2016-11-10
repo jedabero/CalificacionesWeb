@@ -76,6 +76,25 @@ class Usuario extends MapeadorBase
     }
 
     /**
+     * @param string $usuario
+     * @param string $contrasena
+     *
+     * @return ModeloUsuario
+     */
+    public function buscarUsuario($usuario, $contrasena): ModeloUsuario
+    {
+        $contrasena = hash('sha512', $usuario.$contrasena);
+        $condiciones = [ 'usuario' => $usuario, 'contrasena' => $contrasena];
+        $registro = $this->getAdaptador()->buscar(self::TABLA, $condiciones);
+
+        if ($registro == null) {
+            throw new \InvalidArgumentException("Usuario #$usuario no existe");
+        }
+
+        return $this->mapea($registro);
+    }
+
+    /**
      * @param ModeloUsuario $usuario
      *
      */
