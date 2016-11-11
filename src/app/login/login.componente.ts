@@ -34,6 +34,7 @@ export class LoginComponente {
             .subscribe(
                 data => this.router.navigate(['/']),
                 error => {
+                    console.log(error);
                     // TODO: mostrar login no exitoso
                     this.cargando = false;
                 }

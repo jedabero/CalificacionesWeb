@@ -21,7 +21,7 @@ export class AutenticacionServicio {
                 let data = response.json();
                 if (data && data.success && data.conectado) {
                     localStorage.setItem('session_id', data.session_id);
-                    localStorage.setItem('usuario', data.usuario);
+                    localStorage.setItem('usuario', JSON.stringify(data.usuario));
                 }
                 return { success: data.success, mensaje: data.mensaje };
             });

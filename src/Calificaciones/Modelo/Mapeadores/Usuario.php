@@ -100,7 +100,7 @@ class Usuario extends MapeadorBase
      */
     public function guardar(ModeloUsuario $usuario)
     {
-        $datos = $usuario->toArray();
+        $datos = $usuario->toArray(true);
         $contrasena = hash('sha512', $datos['usuario'].$datos['contrasena']);
         unset($datos['grupos']);
         if (is_null($usuario->getId())) {

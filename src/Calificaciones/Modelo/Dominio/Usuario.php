@@ -9,6 +9,9 @@ use Calificaciones\Soporte\Coleccion;
  */
 class Usuario extends ModeloBase
 {
+
+    protected $hidden = [ 'contrasena' ];
+
     /**
      * @var string
      */
@@ -190,16 +193,15 @@ class Usuario extends ModeloBase
         return is_null($this->getId());
     }
 
-    public function toArray()
+    public function toArray($withHidden = false)
     {
-        return array_merge(parent::toArray(), [
-            'identificacion' => $this->identificacion,
-            'nombres' => $this->nombres,
-            'apellidos' => $this->apellidos,
-            'email' => $this->email,
-            'usuario' => $this->usuario,
-            'contrasena' => $this->contrasena,
-            'grupos' => $this->getGrupos()
-        ]);
+        $properties = [ 'identificacion', 'nombres', 'apellidos', 'email', 'usuario', 'contrasena', 'grupos' ];
+        $newArray = [];
+        foreach ($properties as $property) {
+            if ($withHidden || !in_array($property, $this->hidden)) {
+                $newArray[$property] = $this->$property;
+            }
+        }
+        return array_merge(parent::toArray(), $newArray);
     }
 }
