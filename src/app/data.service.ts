@@ -19,7 +19,7 @@ export class DataService {
     getHeroes(): Promise<Heroe[]> {
         return this.http.get(this.dataUrl)
             .toPromise()
-            .then(response => response.json() as Heroe[])
+            .then(response => response.json().usuarios as Heroe[])
             .catch(this.handleError);
     }
 
