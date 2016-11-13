@@ -23,7 +23,7 @@ class Autenticacion extends C_Controller
             $usuario = $mapeador->buscarUsuario($datos['usuario'], $datos['contrasena']);
             $this->load->library('session');
             $this->session->set_userdata([
-                'logged_id' => true,
+                'logged_in' => true,
                 'usuario' => $usuario
             ]);
             $respuesta['mensaje'] = "Autenticado correctamente";

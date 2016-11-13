@@ -12,6 +12,7 @@ build
 vendor/
 composer.phar
 application/logs/
+application/sessions/
 node_modules/
 public/js/
 public/css/

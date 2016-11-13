@@ -29,11 +29,13 @@ class Grupo extends MapeadorBase
         $condicion = is_null($usuario_id) ? null : ['usuario_id' => $usuario_id];
         $registros = $this->getAdaptador()->listar(self::TABLA, $condicion);
 
+        $todos = Coleccion::crear();
+
         if ($registros == null) {
-            throw new \InvalidArgumentException("No existen Grupos");
+            #throw new \InvalidArgumentException("No existen Grupos");
+            return $todos;
         }
 
-        $todos = Coleccion::crear();
         foreach ($registros as $registro) {
             $todos[] = $this->mapea($registro);
         }
@@ -69,7 +71,7 @@ class Grupo extends MapeadorBase
         }
     }
 
-    private function mapea(array $registro): ModeloGrupo
+    public function mapea(array $registro): ModeloGrupo
     {
         return ModeloGrupo::crear($registro);
     }

@@ -64,6 +64,12 @@ $route['api/usuarios/(:num)']['GET'] = 'api/usuarios/buscar/$1';
 $route['api/usuarios/(\w+)']['GET'] = 'api/usuarios/buscar/$1';
 $route['api/usuarios/(:num)']['POST'] = 'api/usuarios/guardar/$1';
 $route['api/usuarios/(\w+)']['POST'] = 'api/usuarios/guardar/$1';
+
+$route['api/grupos']['GET'] = 'api/grupos/listar';
+$route['api/grupos']['POST'] = 'api/grupos/guardar';
+$route['api/grupos/(:num)']['GET'] = 'api/grupos/buscar/$1';
+$route['api/grupos/(:num)']['POST'] = 'api/grupos/guardar/$1';
+
 $route['api/periodos/(:num)']['GET'] = 'api/periodos/get/$1';
 $route['api/periodos/(:num)']['POST'] = 'api/periodos/save/$1';
 
