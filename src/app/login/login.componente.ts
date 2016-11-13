@@ -10,7 +10,7 @@ import { AutenticacionServicio } from '../servicios/autenticacion.servicio';
     templateUrl: 'login.componente.html',
     styleUrls: [ 'login.componente.css' ]
 })
-export class LoginComponente {
+export class LoginComponente implements OnInit {
 
     @Input()
     usuario: string;
@@ -25,7 +25,9 @@ export class LoginComponente {
     ) {}
 
     ngOnInit(): void {
-        // this.servicio.logout();
+        // TODO: validar si usuario esta conectado
+        // redirecionar a '' si lo está
+        // continuar normal si no
     }
 
     login(): void {

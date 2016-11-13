@@ -10,12 +10,12 @@ import { AutenticacionServicio } from './servicios/autenticacion.servicio';
 import { UsuariosServicio } from './servicios/usuarios.servicio';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponente } from './login/login.componente';
+import { LogoutComponente } from './login/logout.componente';
 import { RegistroComponente } from './registro/registro.componente';
 
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
-
 
 @NgModule({
     imports: [
@@ -28,6 +28,7 @@ import { DataService } from './data.service';
         AppComponent,
         DashboardComponent,
         LoginComponente,
+        LogoutComponente,
         RegistroComponente,
         DetailComponent,
         DataComponent
