@@ -9,10 +9,10 @@ import { DataService } from '../data.service';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html',
-    styleUrls: [ 'dashboard.component.css' ]
+    templateUrl: 'dashboard.componente.html',
+    styleUrls: [ 'dashboard.componente.css' ]
 })
-export class DashboardComponent {
+export class DashboardComponente {
 
     titulo = "Tour de Heroes";
 

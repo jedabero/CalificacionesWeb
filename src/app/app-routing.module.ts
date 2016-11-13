@@ -5,8 +5,8 @@
 import { NgModule }  from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component';
+import { DashboardComponente } from './dashboard/dashboard.componente';
+import { HomeComponente } from './home/home.componente';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
@@ -17,11 +17,14 @@ import { RegistroComponente } from './registro/registro.componente';
 const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent,
+        component: DashboardComponente,
         children: [
             {
                 path: '',
-                component: HomeComponent
+                component: HomeComponente
+            }, {
+                path: 'grupos',
+                component: GruposComponente
             }, {
                 path: 'heroes',
                 component: DataComponent
