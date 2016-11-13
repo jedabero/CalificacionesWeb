@@ -14,6 +14,8 @@ import { DataService } from '../data.service';
 })
 export class DashboardComponent {
 
+    titulo = "Tour de Heroes";
+
     heroes: Heroe[] = [];
 
     constructor(private service: DataService) {}

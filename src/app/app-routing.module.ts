@@ -14,23 +14,26 @@ import { RegistroComponente } from './registro/registro.componente';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-    }, {
-        path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'heroes',
+                pathMatch: 'full'
+            }, {
+                path: 'heroes',
+                component: DataComponent
+            }, {
+                path: 'detail/:id',
+                component: DetailComponent
+            }
+        ]
     }, {
         path: 'login',
         component: LoginComponente
     }, {
         path: 'registrar',
         component: RegistroComponente
-    }, {
-        path: 'heroes',
-        component: DataComponent
-    }, {
-        path: 'detail/:id',
-        component: DetailComponent
     }
 ];
 
