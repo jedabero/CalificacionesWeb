@@ -3,6 +3,8 @@
  */
 
 export class Grupo {
+    id: number;
+    estado: number;
     nombre: string;
     usuario_id: number;
 }

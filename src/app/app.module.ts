@@ -8,12 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutenticacionServicio } from './servicios/autenticacion.servicio';
 import { UsuariosServicio } from './servicios/usuarios.servicio';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { GruposServicio } from './servicios/grupos.servicio';
+
+import { DashboardComponente } from './dashboard/dashboard.componente';
 import { LoginComponente } from './login/login.componente';
 import { LogoutComponente } from './login/logout.componente';
 import { RegistroComponente } from './registro/registro.componente';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponente } from './home/home.componente';
+import { GruposComponente } from './grupos/grupos.componente';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -27,17 +30,19 @@ import { DataService } from './data.service';
     ],
     declarations: [
         AppComponent,
-        DashboardComponent,
+        DashboardComponente,
         LoginComponente,
         LogoutComponente,
         RegistroComponente,
-        HomeComponent,
+        HomeComponente,
+        GruposComponente,
         DetailComponent,
         DataComponent
     ],
     providers: [
         AutenticacionServicio,
         UsuariosServicio,
+        GruposServicio,
         DataService
     ],
     bootstrap: [ AppComponent ]

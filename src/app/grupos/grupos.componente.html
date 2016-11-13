@@ -1,0 +1,16 @@
+<h2>Grupos</h2>
+<div>
+    <label>Nombre heroe:</label> <input #nombreHeroe />
+    <button (click)="agregar(nombreHeroe.value); nombreHeroe.value=''">Add</button>
+</div>
+<ul class="grupos">
+    <li *ngFor="let grupo of grupos"
+        (click)="onSelect(grupo)"
+        [class.selected]="grupo === seleccionado">
+        <span class="badge">{{ grupo.id }}</span> {{ grupo.nombre }}
+    </li>
+</ul>
+<div *ngIf="seleccionado">
+    <h2>{{ seleccionado.nombre | uppercase }}</h2>
+    <button (click)="gotoDetalle()">Ver Detalles</button>
+</div>

@@ -7,6 +7,7 @@ import { RouterModule, Routes }   from '@angular/router';
 
 import { DashboardComponente } from './dashboard/dashboard.componente';
 import { HomeComponente } from './home/home.componente';
+import { GruposComponente } from './grupos/grupos.componente';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
