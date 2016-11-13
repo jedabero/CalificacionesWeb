@@ -5,9 +5,11 @@
 import { NgModule }  from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { LoginComponente } from './login/login.componente';
 import { LogoutComponente } from './login/logout.componente';
 import { RegistroComponente } from './registro/registro.componente';
@@ -19,8 +21,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'heroes',
-                pathMatch: 'full'
+                component: HomeComponent
             }, {
                 path: 'heroes',
                 component: DataComponent

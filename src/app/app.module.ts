@@ -13,6 +13,7 @@ import { LoginComponente } from './login/login.componente';
 import { LogoutComponente } from './login/logout.componente';
 import { RegistroComponente } from './registro/registro.componente';
 
+import { HomeComponent } from './home/home.component';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -30,6 +31,7 @@ import { DataService } from './data.service';
         LoginComponente,
         LogoutComponente,
         RegistroComponente,
+        HomeComponent,
         DetailComponent,
         DataComponent
     ],
