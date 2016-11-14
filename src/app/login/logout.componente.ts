@@ -7,7 +7,7 @@ import { AutenticacionServicio } from '../servicios/autenticacion.servicio';
 
 @Component({
     moduleId: module.id,
-    template: '',
+    template: 'Logging out...',
 })
 export class LogoutComponente implements OnInit {
 
@@ -17,8 +17,11 @@ export class LogoutComponente implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.servicio.logout();
-        this.router.navigate(['/'])
+        this.servicio.logout()
+            .subscribe(
+                data => this.router.navigate(['/']),
+                error => console.log(error)
+            );
     }
 
 }

@@ -5,23 +5,26 @@
 import { NgModule }  from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
+import { AuntenticacionGuardia } from "./guardias/autenticacion.guardia";
+
 import { DashboardComponente } from './dashboard/dashboard.componente';
 import { HomeComponente } from './home/home.componente';
 import { GruposComponente } from './grupos/grupos.componente';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
-import { LoginComponente } from './login/login.componente';
-import { LogoutComponente } from './login/logout.componente';
+import { LoginComponente, LogoutComponente } from './login/index';
 import { RegistroComponente } from './registro/registro.componente';
 
 const routes: Routes = [
     {
         path: '',
         component: DashboardComponente,
+        canActivate: [ AuntenticacionGuardia ],
         children: [
             {
                 path: '',
+                canActivate: [ AuntenticacionGuardia ],
                 component: HomeComponente
             }, {
                 path: 'grupos',
