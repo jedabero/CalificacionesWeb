@@ -1,7 +1,7 @@
 /**
  * Created by jedabero on 7/11/16.
  */
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuariosServicio } from '../servicios/usuarios.servicio';
 import { Usuario } from "../modelos/usuario";
@@ -22,10 +22,6 @@ export class RegistroComponente {
         private router: Router,
         private servicio: UsuariosServicio
     ) {}
-
-    ngOnInit(): void {
-        // this.servicio.logout();
-    }
 
     registrar(): void {
         this.cargando = false;
