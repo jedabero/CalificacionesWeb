@@ -32,13 +32,13 @@ class Grupo extends ModeloBase
     {
         return new static(
             $registro['nombre'],
-            $registro['usuario_id'],
-            $registro['estado'],
-            $registro['id']
+            array_key_exists('usuario_id', $registro) ? $registro['usuario_id'] : null,
+            array_key_exists('estado', $registro) ? $registro['estado'] : 1,
+            array_key_exists('id', $registro) ? $registro['id'] : null
         );
     }
 
-    function __construct(string $nombre, string $usuario_id, int $estado = 1, $id = null)
+    function __construct(string $nombre, $usuario_id, int $estado = 1, $id = null)
     {
         parent::__construct($estado, $id);
         $this->nombre = $nombre;
@@ -87,7 +87,8 @@ class Grupo extends ModeloBase
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'nombre' => $this->nombre
+            'nombre' => $this->nombre,
+            'usuario_id' => $this->usuario_id
         ]);
     }
 

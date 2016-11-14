@@ -7,22 +7,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Grupos extends C_Controller {
 
     /**
-     * @var MapeadorGrupo
+     * @var \Calificaciones\Modelo\Mapeadores\Grupo
      */
     protected $mapeador;
+
+    /**
+     * @var \Calificaciones\Modelo\Dominio\Usuario
+     */
+    protected $usuario;
 
     public function __construct($cargarDb = true)
     {
         parent::__construct($cargarDb);
         $this->mapeador = new MapeadorGrupo($this->adaptador);
+        $this->load->library('session');
+        $this->usuario = $this->session->usuario;// TODO handle no session
     }
 
 
     public function listar()
     {
-        $this->load->library('session');
-        $usuario_id = $this->session->usuario->getId();// TODO handle no session
-        $grupos = $this->mapeador->todos($usuario_id);
+        $grupos = $this->mapeador->todos($this->usuario->getId());
 
         $this->salida_json(200, [ 'success' => true, 'grupos' => $grupos ]);
     }
@@ -30,7 +35,6 @@ class Grupos extends C_Controller {
 	public function buscar($id)
 	{
         $grupo = $this->mapeador->buscar($id);
-
 		$this->salida_json(200, [ 'success' => true, 'grupo' => $grupo ]);
 	}
 
@@ -38,6 +42,7 @@ class Grupos extends C_Controller {
     {
         $datos = $this->json_input();
         $grupo = $this->mapeador->mapea($datos['grupo']);
+        $grupo->setUsuario($this->usuario);
         $grupo->setId($id);
 
         $this->mapeador->guardar($grupo);

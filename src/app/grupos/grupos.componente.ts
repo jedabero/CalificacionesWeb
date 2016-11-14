@@ -13,6 +13,7 @@ import { GruposServicio } from '../servicios/grupos.servicio';
     styleUrls: [ 'grupos.componente.css' ]
 })
 export class GruposComponente implements OnInit {
+    nuevoGrupo = new Grupo();
     grupos: Grupo[];
     seleccionado: Grupo;
     constructor(
@@ -34,12 +35,13 @@ export class GruposComponente implements OnInit {
     gotoDetalle(): void {
         this.router.navigate([ '/grupos', this.seleccionado.id ]);
     }
-    agregar(grupo: Grupo): void {
-        if (!grupo) { return; }
-        this.service.crear(grupo)
+    agregar(): void {
+        console.log(JSON.stringify(this.nuevoGrupo));
+        if (!this.nuevoGrupo.nombre) { return; }
+        this.service.crear(this.nuevoGrupo)
             .subscribe(
                 data => {
-                    grupo = data.grupo;
+                    let grupo = data.grupo;
                     this.grupos.push(grupo);
                     this.seleccionado = grupo;
                 },

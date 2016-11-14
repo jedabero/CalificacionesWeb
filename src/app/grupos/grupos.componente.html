@@ -1,10 +1,14 @@
 <h2>Grupos</h2>
-<div>
-    <label>Nombre heroe:</label> <input #nombreHeroe />
-    <button (click)="agregar(nombreHeroe.value); nombreHeroe.value=''">Add</button>
-</div>
-<ul class="grupos">
-    <li *ngFor="let grupo of grupos"
+<form class="form-inline form-grupo">
+    <div class="form-group">
+        <label for="inputNombreGrupo">Nuevo Grupo</label>
+        <input type="text" id="inputNombreGrupo" name="nombre" class="form-control" placeholder="Nombre"
+               [(ngModel)]="nuevoGrupo.nombre" #inputNombreGrupo/>
+    </div>
+    <button (click)="agregar(); inputNombreGrupo.value=''">Agregar</button>
+</form>
+<ul class="list-group grupos">
+    <li class="list-group-item" *ngFor="let grupo of grupos"
         (click)="onSelect(grupo)"
         [class.selected]="grupo === seleccionado">
         <span class="badge">{{ grupo.id }}</span> {{ grupo.nombre }}
