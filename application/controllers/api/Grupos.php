@@ -35,6 +35,9 @@ class Grupos extends C_Controller {
 	public function buscar($id)
 	{
         $grupo = $this->mapeador->buscar($id);
+        if ($grupo->getUsuarioId() != $this->usuario->getId()) {
+            throw new \UnexpectedValueException("Grupo #$id no le pertenece");
+        }
 		$this->salida_json(200, [ 'success' => true, 'grupo' => $grupo ]);
 	}
 
@@ -47,7 +50,7 @@ class Grupos extends C_Controller {
 
         $this->mapeador->guardar($grupo);
 
-        $this->salida_json(200, [ 'success' => true, 'id' => $grupo->getId() ]);
+        $this->salida_json(200, [ 'success' => true, 'id' => $grupo->getId(), 'grupo'=> $grupo ]);
 	}
 
 }

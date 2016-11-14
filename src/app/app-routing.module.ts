@@ -9,7 +9,7 @@ import { AuntenticacionGuardia } from "./guardias/autenticacion.guardia";
 
 import { DashboardComponente } from './dashboard/dashboard.componente';
 import { HomeComponente } from './home/home.componente';
-import { GruposComponente } from './grupos/grupos.componente';
+import { GruposComponente, GrupoComponente } from './grupos/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
@@ -29,6 +29,9 @@ const routes: Routes = [
             }, {
                 path: 'grupos',
                 component: GruposComponente
+            }, {
+                path: 'grupos/:id',
+                component: GrupoComponente
             }, {
                 path: 'heroes',
                 component: DataComponent

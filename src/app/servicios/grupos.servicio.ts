@@ -25,4 +25,14 @@ export class GruposServicio {
         return this.http.get(this.baseUrl).map((response: Response) => response.json());
     }
 
+    buscar(id: number) {
+        return this.http.get(this.baseUrl+id).map((response: Response) => response.json());
+    }
+
+    actualizar(grupo: Grupo) {
+        return this.http
+            .post(this.baseUrl+grupo.id, JSON.stringify({ grupo }), { headers: this.headers })
+            .map((response: Response) => response.json());
+    }
+
 }

@@ -1,0 +1,10 @@
+<div *ngIf="grupo">
+    <h2>Detalles de {{ grupo.nombre }}</h2>
+    <div><label>id: </label>{{ grupo.id }}</div>
+    <div>
+        <label>nombre: </label>
+        <input type="text" [(ngModel)]="grupo.nombre" placeholder="Nombre">
+    </div>
+    <button (click)="guardar()">Save</button>
+    <button (click)="goBack()">Back</button>
+</div>

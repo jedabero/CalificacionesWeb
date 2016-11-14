@@ -84,6 +84,14 @@ class Grupo extends ModeloBase
         }
     }
 
+    /**
+     * @return null|string
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuario_id;
+    }
+
     public function toArray()
     {
         return array_merge(parent::toArray(), [

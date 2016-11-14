@@ -64,10 +64,11 @@ class Grupo extends MapeadorBase
      */
     public function guardar(ModeloGrupo $grupo)
     {
-        if (!is_null($grupo->getId())) {
-            $this->getAdaptador()->actualizar(self::TABLA, $grupo->toArray(), ['id' => $grupo->getId()]);
+        if (is_null($grupo->getId())) {
+            $id = $this->getAdaptador()->guardar(self::TABLA, $grupo->toArray());
+            $grupo->setId($id);
         } else {
-            $this->getAdaptador()->guardar(self::TABLA, $grupo->toArray());
+            $this->getAdaptador()->actualizar(self::TABLA, $grupo->toArray(), ['id' => $grupo->getId()]);
         }
     }
 

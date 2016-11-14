@@ -14,7 +14,7 @@ import { LoginComponente, LogoutComponente } from './login/index';
 import { RegistroComponente } from './registro/registro.componente';
 
 import { HomeComponente } from './home/home.componente';
-import { GruposComponente } from './grupos/grupos.componente';
+import { GruposComponente, GrupoComponente } from './grupos/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -34,6 +34,7 @@ import { DataService } from './data.service';
         RegistroComponente,
         HomeComponente,
         GruposComponente,
+        GrupoComponente,
         DetailComponent,
         DataComponent
     ],
