@@ -32,7 +32,10 @@ export class GrupoComponente implements OnInit {
     getGrupo(id: number): void {
         this.service.buscar(id).subscribe(
             data => this.grupo = data.grupo,
-            error => console.log(error)
+            error => {
+                console.log(error);
+                this.goBack();
+            }
         );
     }
 

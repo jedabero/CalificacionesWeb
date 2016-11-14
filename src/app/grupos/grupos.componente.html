@@ -9,12 +9,8 @@
 </form>
 <ul class="list-group grupos">
     <li class="list-group-item" *ngFor="let grupo of grupos"
-        (click)="onSelect(grupo)"
+        (click)="gotoDetalle(grupo)"
         [class.selected]="grupo === seleccionado">
         <span class="badge">{{ grupo.id }}</span> {{ grupo.nombre }}
     </li>
 </ul>
-<div *ngIf="seleccionado">
-    <h2>{{ seleccionado.nombre | uppercase }}</h2>
-    <button (click)="gotoDetalle()">Ver Detalles</button>
-</div>

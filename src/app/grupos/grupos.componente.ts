@@ -13,9 +13,11 @@ import { GruposServicio } from '../servicios/grupos.servicio';
     styleUrls: [ 'grupos.componente.css' ]
 })
 export class GruposComponente implements OnInit {
+
     nuevoGrupo = new Grupo();
     grupos: Grupo[];
     seleccionado: Grupo;
+
     constructor(
         private router: Router,
         private service: GruposServicio
@@ -23,17 +25,14 @@ export class GruposComponente implements OnInit {
     ngOnInit(): void {
         this.getGrupos();
     }
-    onSelect(grupo: Grupo): void {
-        this.seleccionado = grupo;
-    }
     getGrupos(): void {
         this.service.listar().subscribe(
             data => this.grupos = data.grupos,
             error => console.log(error)
         );
     }
-    gotoDetalle(): void {
-        this.router.navigate([ '/grupos', this.seleccionado.id ]);
+    gotoDetalle(grupo: Grupo): void {
+        this.router.navigate([ '/grupos', grupo.id ]);
     }
     agregar(): void {
         console.log(JSON.stringify(this.nuevoGrupo));
