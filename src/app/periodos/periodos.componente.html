@@ -1,0 +1,21 @@
+<h2 *ngIf="!esDetalle">Grupos</h2>
+<form class="form-inline form-periodo">
+    <div class="form-group">
+        <label for="inputNombre">Nuevo Periodo</label>
+        <input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="Nombre"
+               [(ngModel)]="nuevo.nombre" #inputNombre/>
+    </div>
+    <div class="form-group">
+        <label for="inputOrden">Orden</label>
+        <input type="number" id="inputOrden" name="orden" class="form-control" placeholder=""
+               [(ngModel)]="nuevo.orden" #inputOrden/>
+    </div>
+    <button (click)="agregar(); inputNombre.value='';inputOrden.value=''">Agregar</button>
+</form>
+<ul class="list-group periodos">
+    <li class="list-group-item" *ngFor="let periodo of periodos"
+        (click)="gotoDetalle(periodo)"
+        [class.selected]="periodo === seleccionado">
+        <span class="badge">{{ periodo.id }}</span> {{ periodo.nombre }}
+    </li>
+</ul>

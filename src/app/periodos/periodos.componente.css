@@ -1,0 +1,27 @@
+.form-grupo {
+    margin-bottom: 24px;
+}
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+.grupos {
+    width: 15em;
+}
+.grupos li {
+    cursor: pointer;
+    background-color: #EEE;
+}
+.grupos li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+.grupos li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+}
+.grupos .badge {
+    background-color: #607D8B;
+    float: none;
+    margin-right: 1em;
+}

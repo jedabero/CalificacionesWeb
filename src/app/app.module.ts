@@ -6,7 +6,7 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AutenticacionServicio, UsuariosServicio, GruposServicio } from './servicios/index';
+import { AutenticacionServicio, UsuariosServicio, GruposServicio, PeriodosServicio } from './servicios/index';
 import { AuntenticacionGuardia } from './guardias/autenticacion.guardia';
 
 import { DashboardComponente } from './dashboard/dashboard.componente';
@@ -15,6 +15,7 @@ import { RegistroComponente } from './registro/registro.componente';
 
 import { HomeComponente } from './home/home.componente';
 import { GruposComponente, GrupoComponente } from './grupos/index';
+import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -33,8 +34,8 @@ import { DataService } from './data.service';
         LogoutComponente,
         RegistroComponente,
         HomeComponente,
-        GruposComponente,
-        GrupoComponente,
+        GruposComponente, GrupoComponente,
+        PeriodosComponente, PeriodoComponente,
         DetailComponent,
         DataComponent
     ],
@@ -43,6 +44,7 @@ import { DataService } from './data.service';
         AutenticacionServicio,
         UsuariosServicio,
         GruposServicio,
+        PeriodosServicio,
         DataService
     ],
     bootstrap: [ AppComponent ]

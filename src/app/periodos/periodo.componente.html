@@ -1,0 +1,10 @@
+<div *ngIf="periodo">
+    <h2>Detalles de {{ periodo.nombre }}</h2>
+    <div><label>id: </label>{{ periodo.id }}</div>
+    <div>
+        <label>nombre: </label>
+        <input type="text" [(ngModel)]="periodo.nombre" placeholder="Nombre">
+    </div>
+    <button (click)="guardar()">Save</button>
+    <button (click)="goBack()">Back</button>
+</div>
