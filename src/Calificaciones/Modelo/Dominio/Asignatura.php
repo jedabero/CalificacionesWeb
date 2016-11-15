@@ -40,6 +40,11 @@ class Asignatura extends ModeloBase
      */
     private $notas;
 
+    /**
+     * @var bool
+     */
+    private $definitivaCalculada = false;
+
     public static function crear(array $registro): Asignatura
     {
         return new static(
@@ -78,15 +83,10 @@ class Asignatura extends ModeloBase
      */
     public function getDefinitiva(): float
     {
+        if (!$this->definitivaCalculada) {
+            $this->calcularDefinitiva();
+        }
         return $this->definitiva;
-    }
-
-    /**
-     * @param float $definitiva
-     */
-    public function setDefinitiva(float $definitiva)
-    {
-        $this->definitiva = $definitiva;
     }
 
     /**
@@ -122,7 +122,7 @@ class Asignatura extends ModeloBase
     }
 
     /**
-     * @return Coleccion
+     * @return Nota[]|Coleccion
      */
     public function getNotas(): Coleccion
     {
@@ -135,16 +135,38 @@ class Asignatura extends ModeloBase
     public function setNotas(Coleccion $notas)
     {
         $this->notas = Coleccion::crear($notas);
+        $this->definitivaCalculada = false;
     }
 
-    public function toArray()
+    private function calcularDefinitiva()
     {
-        return array_merge(parent::toArray(), [
+        if (count($this->notas) > 0) {
+            $definitiva = 0;
+            $pesoTotal = 0;
+            foreach ($this->getNotas() as $nota) {
+                $definitiva += $nota->valorPonderado();
+                $pesoTotal += $nota->getPeso();
+            }
+            $this->definitiva = $definitiva/$pesoTotal;
+        } else {
+            $this->definitiva = 0;
+        }
+        $this->definitivaCalculada = true;
+    }
+
+    public function toArray($mostrarDerivados = true)
+    {
+        $datos = [
             'nombre' => $this->nombre,
-            'definitiva' => $this->definitiva,
             'periodo_id' => $this->periodo_id,
             'notas' => $this->notas
-        ]);
+        ];
+
+        if ($mostrarDerivados) {
+            $datos['definitiva'] = $this->getDefinitiva();
+        }
+
+        return array_merge(parent::toArray(), $datos);
     }
 
 }

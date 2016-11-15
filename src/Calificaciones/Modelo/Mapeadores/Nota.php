@@ -64,11 +64,12 @@ class Nota extends MapeadorBase
      */
     public function guardar(ModeloNota $nota)
     {
+        $datos = $nota->toArray(false);
         if (is_null($nota->getId())) {
-            $id = $this->getAdaptador()->guardar(self::TABLA, $nota->toArray());
+            $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
             $nota->setId($id);
         } else {
-            $this->getAdaptador()->actualizar(self::TABLA, $nota->toArray(), ['id' => $nota->getId()]);
+            $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $nota->getId()]);
         }
     }
 

@@ -146,14 +146,25 @@ class Nota extends ModeloBase
         $this->asignatura_id = $asignatura_id;
     }
 
-    public function toArray()
+    public function valorPonderado(): float
     {
-        return array_merge(parent::toArray(), [
+        return $this->peso * $this->valor;
+    }
+
+    public function toArray($mostrarDerivados = true)
+    {
+        $datos = [
             'valor' => $this->valor,
             'peso' => $this->peso,
             'orden' => $this->orden,
             'asignatura_id' => $this->asignatura_id
-        ]);
+        ];
+
+        if ($mostrarDerivados) {
+
+        }
+
+        return array_merge(parent::toArray(), $datos);
     }
 
 }
