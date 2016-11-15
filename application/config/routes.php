@@ -65,15 +65,16 @@ $route['api/usuarios/(\w+)']['GET'] = 'api/usuarios/buscar/$1';
 $route['api/usuarios/(:num)']['POST'] = 'api/usuarios/guardar/$1';
 $route['api/usuarios/(\w+)']['POST'] = 'api/usuarios/guardar/$1';
 
-$route['api/grupos']['GET'] = 'api/grupos/listar';
-$route['api/grupos']['POST'] = 'api/grupos/guardar';
-$route['api/grupos/(:num)']['GET'] = 'api/grupos/buscar/$1';
-$route['api/grupos/(:num)']['POST'] = 'api/grupos/guardar/$1';
+$rutas = [
+    'grupos', 'periodos', 'asignaturas', 'notas'
+];
 
-$route['api/periodos']['GET'] = 'api/periodos/listar';
-$route['api/periodos']['POST'] = 'api/periodos/guardar';
-$route['api/periodos/(:num)']['GET'] = 'api/periodos/buscar/$1';
-$route['api/periodos/(:num)']['POST'] = 'api/periodos/guardar/$1';
+foreach ($rutas as $ruta) {
+    $route["api/$ruta"]['GET'] = "api/$ruta/listar";
+    $route["api/$ruta"]['POST'] = "api/$ruta/guardar";
+    $route["api/$ruta/(:num)"]['GET'] = "api/$ruta/buscar/$1";
+    $route["api/$ruta/(:num)"]['POST'] = "api/$ruta/guardar/$1";
+}
 
 $route['(:any)/(:any)'] = 'front';
 $route['(:any)'] = 'front';
