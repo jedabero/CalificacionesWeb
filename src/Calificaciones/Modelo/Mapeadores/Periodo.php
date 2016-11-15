@@ -9,6 +9,7 @@
 namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Periodo as ModeloPeriodo;
+use Calificaciones\Modelo\Mapeadores\Asignatura as MapeadorAsignatura;
 use Calificaciones\Modelo\MapeadorBase;
 use Calificaciones\Soporte\Coleccion;
 
@@ -44,10 +45,11 @@ class Periodo extends MapeadorBase
 
     /**
      * @param mixed $id
+     * @param boolean $cargar
      *
      * @return ModeloPeriodo
      */
-    public function buscar($id): ModeloPeriodo
+    public function buscar($id, $cargar = true): ModeloPeriodo
     {
         $registro = $this->getAdaptador()->buscarPorId(self::TABLA, $id);
 
@@ -55,7 +57,14 @@ class Periodo extends MapeadorBase
             throw new \InvalidArgumentException("Periodo #$id no existe");
         }
 
-        return $this->mapea($registro);
+        $periodo = $this->mapea($registro);
+
+        if ($cargar) {
+            $mapeador = new MapeadorAsignatura($this->getAdaptador());
+            $periodo->setAsignaturas($mapeador->todos($id));
+        }
+
+        return $periodo;
     }
 
     /**

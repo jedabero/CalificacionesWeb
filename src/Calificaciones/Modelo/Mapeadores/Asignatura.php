@@ -10,6 +10,7 @@ namespace Calificaciones\Modelo\Mapeadores;
 
 
 use Calificaciones\Modelo\Dominio\Asignatura as ModeloAsignatura;
+use Calificaciones\Modelo\Mapeadores\Nota as MapeadorNota;
 use Calificaciones\Modelo\MapeadorBase;
 use Calificaciones\Soporte\Coleccion;
 
@@ -28,7 +29,7 @@ class Asignatura extends MapeadorBase
      */
     public function todos($periodo_id = null)
     {
-        $condicion = is_null($periodo_id) ? null : ['grupo_id' => $periodo_id];
+        $condicion = is_null($periodo_id) ? null : ['periodo_id' => $periodo_id];
         $registros = $this->getAdaptador()->listar(self::TABLA, $condicion);
 
         $todos = Coleccion::crear();
@@ -45,10 +46,11 @@ class Asignatura extends MapeadorBase
 
     /**
      * @param mixed $id
+     * @param boolean $cargar
      *
      * @return ModeloAsignatura
      */
-    public function buscar($id): ModeloAsignatura
+    public function buscar($id, $cargar = true): ModeloAsignatura
     {
         $registro = $this->getAdaptador()->buscarPorId(self::TABLA, $id);
 
@@ -56,7 +58,14 @@ class Asignatura extends MapeadorBase
             throw new \InvalidArgumentException("Asignatura #$id no existe");
         }
 
-        return $this->mapea($registro);
+        $asignatura = $this->mapea($registro);
+
+        if ($cargar) {
+            $mapeador = new MapeadorNota($this->getAdaptador());
+            $asignatura->setNotas($mapeador->todos($id));
+        }
+
+        return $asignatura;
     }
 
     /**
