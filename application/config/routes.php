@@ -70,8 +70,10 @@ $route['api/grupos']['POST'] = 'api/grupos/guardar';
 $route['api/grupos/(:num)']['GET'] = 'api/grupos/buscar/$1';
 $route['api/grupos/(:num)']['POST'] = 'api/grupos/guardar/$1';
 
-$route['api/periodos/(:num)']['GET'] = 'api/periodos/get/$1';
-$route['api/periodos/(:num)']['POST'] = 'api/periodos/save/$1';
+$route['api/periodos']['GET'] = 'api/periodos/listar';
+$route['api/periodos']['POST'] = 'api/periodos/guardar';
+$route['api/periodos/(:num)']['GET'] = 'api/periodos/buscar/$1';
+$route['api/periodos/(:num)']['POST'] = 'api/periodos/guardar/$1';
 
 $route['(:any)/(:any)'] = 'front';
 $route['(:any)'] = 'front';

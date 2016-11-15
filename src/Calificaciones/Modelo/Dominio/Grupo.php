@@ -10,6 +10,7 @@ namespace Calificaciones\Modelo\Dominio;
 
 
 use Calificaciones\Modelo\ModeloBase;
+use Calificaciones\Soporte\Coleccion;
 
 class Grupo extends ModeloBase
 {
@@ -27,6 +28,11 @@ class Grupo extends ModeloBase
      * @var string|null
      */
     private $usuario_id;
+
+    /**
+     * @var Coleccion
+     */
+    private $periodos;
 
     public static function crear(array $registro): Grupo
     {
@@ -92,11 +98,28 @@ class Grupo extends ModeloBase
         return $this->usuario_id;
     }
 
+    /**
+     * @return Coleccion
+     */
+    public function getPeriodos(): Coleccion
+    {
+        return $this->periodos;
+    }
+
+    /**
+     * @param array|Coleccion $periodos
+     */
+    public function setPeriodos($periodos)
+    {
+        $this->periodos = Coleccion::crear($periodos);
+    }
+
     public function toArray()
     {
         return array_merge(parent::toArray(), [
             'nombre' => $this->nombre,
-            'usuario_id' => $this->usuario_id
+            'usuario_id' => $this->usuario_id,
+            'periodos' => $this->periodos
         ]);
     }
 

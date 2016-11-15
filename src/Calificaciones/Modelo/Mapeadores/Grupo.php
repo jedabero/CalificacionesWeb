@@ -10,6 +10,7 @@ namespace Calificaciones\Modelo\Mapeadores;
 
 use Calificaciones\Modelo\Dominio\Grupo as ModeloGrupo;
 use Calificaciones\Modelo\MapeadorBase;
+use Calificaciones\Modelo\Mapeadores\Periodo as MapeadorPeriodo;
 use Calificaciones\Soporte\Coleccion;
 
 class Grupo extends MapeadorBase
@@ -44,10 +45,11 @@ class Grupo extends MapeadorBase
 
     /**
      * @param mixed $id
+     * @param boolean $cargar
      *
      * @return ModeloGrupo
      */
-    public function buscar($id): ModeloGrupo
+    public function buscar($id, $cargar = true): ModeloGrupo
     {
         $registro = $this->getAdaptador()->buscarPorId(self::TABLA, $id);
 
@@ -55,7 +57,14 @@ class Grupo extends MapeadorBase
             throw new \InvalidArgumentException("Grupo #$id no existe");
         }
 
-        return $this->mapea($registro);
+        $grupo = $this->mapea($registro);
+
+        if ($cargar) {
+            $mapeador = new MapeadorPeriodo($this->getAdaptador());
+            $grupo->setPeriodos($mapeador->todos($id));
+        }
+
+        return $grupo;
     }
 
     /**

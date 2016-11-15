@@ -1,26 +1,26 @@
-.form-grupo {
+.form-periodo {
     margin-bottom: 24px;
 }
 .selected {
     background-color: #CFD8DC !important;
     color: white;
 }
-.grupos {
+.periodos {
     width: 15em;
 }
-.grupos li {
+.periodos li {
     cursor: pointer;
     background-color: #EEE;
 }
-.grupos li.selected:hover {
+.periodos li.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
 }
-.grupos li:hover {
+.periodos li:hover {
     color: #607D8B;
     background-color: #DDD;
 }
-.grupos .badge {
+.periodos .badge {
     background-color: #607D8B;
     float: none;
     margin-right: 1em;
