@@ -27,7 +27,8 @@ class Grupos extends C_Controller {
 
     public function listar()
     {
-        $grupos = $this->mapeador->todos($this->usuario->getId());
+        $usuario_id = is_null($this->usuario) ? null : $this->usuario->getId();
+        $grupos = $this->mapeador->todos($usuario_id);
 
         $this->salida_json(200, [ 'success' => true, 'grupos' => $grupos ]);
     }
