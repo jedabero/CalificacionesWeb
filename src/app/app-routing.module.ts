@@ -10,6 +10,7 @@ import { AuntenticacionGuardia } from "./guardias/autenticacion.guardia";
 import { DashboardComponente } from './dashboard/dashboard.componente';
 import { HomeComponente } from './home/home.componente';
 import { GruposComponente, GrupoComponente } from './grupos/index';
+import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
@@ -32,6 +33,9 @@ const routes: Routes = [
             }, {
                 path: 'grupos/:id',
                 component: GrupoComponente
+            }, {
+                path: 'periodos/:id',
+                component: PeriodoComponente
             }, {
                 path: 'heroes',
                 component: DataComponent
