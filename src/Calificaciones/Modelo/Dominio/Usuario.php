@@ -37,7 +37,7 @@ class Usuario extends ModeloBase
      */
     private $contrasena;
     /**
-     * @var Coleccion
+     * @var Grupo[]|Coleccion
      */
     private $grupos;
 
@@ -173,7 +173,7 @@ class Usuario extends ModeloBase
     }
 
     /**
-     * @return Coleccion
+     * @return Grupo[]|Coleccion
      */
     public function getGrupos(): Coleccion
     {
@@ -181,7 +181,7 @@ class Usuario extends ModeloBase
     }
 
     /**
-     * @param array|Coleccion $grupos
+     * @param Grupo[]|Coleccion $grupos
      */
     public function setGrupos($grupos)
     {

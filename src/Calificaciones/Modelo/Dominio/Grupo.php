@@ -30,7 +30,7 @@ class Grupo extends ModeloBase
     private $usuario_id;
 
     /**
-     * @var Coleccion
+     * @var Periodo[]|Coleccion
      */
     private $periodos;
 
@@ -99,7 +99,7 @@ class Grupo extends ModeloBase
     }
 
     /**
-     * @return Coleccion
+     * @return Periodo[]|Coleccion
      */
     public function getPeriodos(): Coleccion
     {

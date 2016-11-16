@@ -36,7 +36,7 @@ class Asignatura extends ModeloBase
     private $periodo_id;
 
     /**
-     * @var Coleccion
+     * @var Nota[]|Coleccion
      */
     private $notas;
 
@@ -143,7 +143,7 @@ class Asignatura extends ModeloBase
         if (count($this->notas) > 0) {
             $definitiva = 0;
             $pesoTotal = 0;
-            foreach ($this->getNotas() as $nota) {
+            foreach ($this->notas as $nota) {
                 $definitiva += $nota->valorPonderado();
                 $pesoTotal += $nota->getPeso();
             }

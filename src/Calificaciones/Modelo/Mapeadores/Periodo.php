@@ -73,7 +73,7 @@ class Periodo extends MapeadorBase
      */
     public function guardar(ModeloPeriodo $periodo)
     {
-        $datos = $periodo->toArray();
+        $datos = $periodo->toArray(false);
         unset($datos['asignaturas']);
         if (is_null($periodo->getId())) {
             $id = $this->getAdaptador()->guardar(self::TABLA, $datos);

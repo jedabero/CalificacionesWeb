@@ -36,9 +36,19 @@ class Periodo extends ModeloBase
     private $grupo_id;
 
     /**
-     * @var Coleccion
+     * @var Asignatura[]|Coleccion
      */
     private $asignaturas;
+
+    /**
+     * @var float
+     */
+    private $promedio;
+
+    /**
+     * @var bool
+     */
+    private $promedioCalculado = false;
 
     public static function crear(array $registro): Periodo
     {
@@ -131,7 +141,7 @@ class Periodo extends ModeloBase
     }
 
     /**
-     * @return Coleccion
+     * @return Asignatura[]|Coleccion
      */
     public function getAsignaturas(): Coleccion
     {
@@ -144,16 +154,49 @@ class Periodo extends ModeloBase
     public function setAsignaturas(Coleccion $asignaturas)
     {
         $this->asignaturas = Coleccion::crear($asignaturas);
+        $this->promedioCalculado = false;
     }
 
-    public function toArray()
+    /**
+     * @return float
+     */
+    public function getPromedio(): float
     {
-        return array_merge(parent::toArray(), [
+        if (!$this->promedioCalculado) {
+            $this->calcularPromedio();
+        }
+        return $this->promedio;
+    }
+
+    private function calcularPromedio()
+    {
+        $asignaturas = count($this->asignaturas);
+        if ($asignaturas > 0) {
+            $promedio = 0;
+            foreach ($this->asignaturas as $asignatura) {
+                $promedio += $asignatura->getDefinitiva();
+            }
+            $this->promedio = $promedio/$asignaturas;
+        } else {
+            $this->promedio = 0;
+        }
+        $this->promedioCalculado = true;
+    }
+
+    public function toArray($mostrarDerivados = true)
+    {
+        $datos = [
             'nombre' => $this->nombre,
             'orden' => $this->orden,
             'grupo_id' => $this->grupo_id,
             'asignaturas' => $this->asignaturas
-        ]);
+        ];
+
+        if ($mostrarDerivados) {
+            $datos['promedio'] = $this->getPromedio();
+        }
+
+        return array_merge(parent::toArray(), $datos);
     }
 
 }
