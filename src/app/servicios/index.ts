@@ -6,3 +6,4 @@ export { UsuariosServicio } from './usuarios.servicio';
 export { GruposServicio } from './grupos.servicio';
 export { PeriodosServicio } from './periodos.servicio';
 export { AsignaturasServicio } from './asignaturas.servicio';
+export { NotasServicio } from './notas.servicio';

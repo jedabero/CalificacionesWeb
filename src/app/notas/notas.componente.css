@@ -1,0 +1,27 @@
+.form-nota {
+    margin-bottom: 24px;
+}
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+.notas {
+    width: 15em;
+}
+.notas li {
+    cursor: pointer;
+    background-color: #EEE;
+}
+.notas li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+.notas li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+}
+.notas .badge {
+    background-color: #607D8B;
+    float: none;
+    margin-right: 1em;
+}

@@ -6,7 +6,10 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AutenticacionServicio, UsuariosServicio, GruposServicio, PeriodosServicio, AsignaturasServicio } from './servicios/index';
+import {
+    AutenticacionServicio, UsuariosServicio, GruposServicio,
+    PeriodosServicio, AsignaturasServicio, NotasServicio
+} from './servicios/index';
 import { AuntenticacionGuardia } from './guardias/autenticacion.guardia';
 
 import { DashboardComponente } from './dashboard/dashboard.componente';
@@ -17,6 +20,7 @@ import { HomeComponente } from './home/home.componente';
 import { GruposComponente, GrupoComponente } from './grupos/index';
 import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
+import { NotasComponente, NotaComponente } from './notas/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 import { DataService } from './data.service';
@@ -38,6 +42,7 @@ import { DataService } from './data.service';
         GruposComponente, GrupoComponente,
         PeriodosComponente, PeriodoComponente,
         AsignaturasComponente, AsignaturaComponente,
+        NotasComponente, NotaComponente,
         DetailComponent,
         DataComponent
     ],
@@ -48,6 +53,7 @@ import { DataService } from './data.service';
         GruposServicio,
         PeriodosServicio,
         AsignaturasServicio,
+        NotasServicio,
         DataService
     ],
     bootstrap: [ AppComponent ]
