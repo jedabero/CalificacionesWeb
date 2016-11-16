@@ -24,10 +24,11 @@ class Asignatura extends MapeadorBase
 
     /**
      * @param mixed $periodo_id
+     * @param bool $cargar
      *
      * @return Coleccion|null
      */
-    public function todos($periodo_id = null)
+    public function todos($periodo_id = null, $cargar = true)
     {
         $condicion = is_null($periodo_id) ? null : ['periodo_id' => $periodo_id];
         $registros = $this->getAdaptador()->listar(self::TABLA, $condicion);
@@ -38,8 +39,17 @@ class Asignatura extends MapeadorBase
             return $todos;
         }
 
+        $mapeador = null;
+        if ($cargar) {
+            $mapeador = new MapeadorNota($this->getAdaptador());
+        }
+
         foreach ($registros as $registro) {
-            $todos[] = $this->mapea($registro);
+            $asignatura = $this->mapea($registro);
+            if ($cargar) {
+                $asignatura->setNotas($mapeador->todos($asignatura->getId()));
+            }
+            $todos[] = $asignatura;
         }
         return $todos;
     }
