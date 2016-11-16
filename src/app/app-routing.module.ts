@@ -11,6 +11,7 @@ import { DashboardComponente } from './dashboard/dashboard.componente';
 import { HomeComponente } from './home/home.componente';
 import { GruposComponente, GrupoComponente } from './grupos/index';
 import { PeriodosComponente, PeriodoComponente } from './periodos/index';
+import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
 import { DataComponent } from './data.component';
 import { DetailComponent } from './detail.component';
 
@@ -36,6 +37,9 @@ const routes: Routes = [
             }, {
                 path: 'periodos/:id',
                 component: PeriodoComponente
+            }, {
+                path: 'asignaturas/:id',
+                component: AsignaturaComponente
             }, {
                 path: 'heroes',
                 component: DataComponent

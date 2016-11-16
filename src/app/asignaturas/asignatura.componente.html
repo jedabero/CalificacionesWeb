@@ -1,16 +1,16 @@
-<div *ngIf="periodo">
-    <h2>Detalles de {{ periodo.nombre }}</h2>
+<div *ngIf="asignatura">
+    <h2>Detalles de {{ asignatura.nombre }}</h2>
     <form class="form-horizontal form-periodo">
         <div class="form-group">
             <label class="col-sm-2 control-label">Id</label>
             <div class="col-sm-10">
-                <p class="form-control-static">{{ periodo.id }}</p>
+                <p class="form-control-static">{{ asignatura.id }}</p>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Promedio</label>
             <div class="col-sm-10">
-                <p class="form-control-static">{{ periodo.promedio }}</p>
+                <p class="form-control-static">{{ asignatura.definitiva }}</p>
             </div>
         </div>
         <div class="form-group">
@@ -18,15 +18,7 @@
             <div class="col-sm-10">
                 <input type="text" class="form-control"
                        id="inputNombre" name="nombre" placeholder="Nombre"
-                       [(ngModel)]="periodo.nombre" #inputNombre/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputOrden" class="col-sm-2 control-label">Orden</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control"
-                       id="inputOrden" name="orden"
-                       [(ngModel)]="periodo.orden" #inputOrden/>
+                       [(ngModel)]="asignatura.nombre" #inputNombre/>
             </div>
         </div>
         <div class="form-group">
@@ -36,5 +28,4 @@
             </div>
         </div>
     </form>
-    <asignaturas [periodoId]="periodo.id" [asignaturas]="periodo.asignaturas"></asignaturas>
 </div>

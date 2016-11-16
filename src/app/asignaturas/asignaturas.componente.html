@@ -1,0 +1,17 @@
+<h2 *ngIf="periodoId === 0">Asignaturas</h2>
+<h4 *ngIf="periodoId !== 0">Asignaturas</h4>
+<form class="form-inline form-asignatura">
+    <div class="form-group">
+        <label for="inputNombre">Nuevo Periodo</label>
+        <input type="text" id="inputNombre" name="nombre" class="form-control" placeholder="Nombre"
+               [(ngModel)]="nuevo.nombre" #inputNombre/>
+    </div>
+    <button class="btn btn-primary" (click)="agregar(); inputNombre.value=''">Agregar</button>
+</form>
+<ul class="list-group asignaturas">
+    <li class="list-group-item" *ngFor="let asignatura of asignaturas"
+        (click)="gotoDetalle(asignatura)"
+        [class.selected]="asignatura === seleccionado">
+        <span class="badge">{{ asignatura.definitiva }}</span> {{ asignatura.nombre }}
+    </li>
+</ul>

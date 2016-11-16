@@ -1,0 +1,27 @@
+.form-asignatura {
+    margin-bottom: 24px;
+}
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+.asignaturas {
+    width: 15em;
+}
+.asignaturas li {
+    cursor: pointer;
+    background-color: #EEE;
+}
+.asignaturas li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+.asignaturas li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+}
+.asignaturas .badge {
+    background-color: #607D8B;
+    float: none;
+    margin-right: 1em;
+}
