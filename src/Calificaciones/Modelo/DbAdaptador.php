@@ -24,11 +24,20 @@ class DbAdaptador
      *
      * @return array|null
      */
-    public function listar(string $tabla, $condiciones = [])
+    public function listar(string $tabla, $condiciones = [], $order_bys = [])
     {
         if (count($condiciones) > 0) {
             $this->db->where($condiciones);
         }
+        foreach ($order_bys as $key => $value) {
+            if (is_numeric($key)) {
+                $this->db->order_by($value);
+            } else {
+                $this->db->order_by($key, $value);
+            }
+
+        }
+
         return $this->db->get($tabla)->result_array();
     }
 

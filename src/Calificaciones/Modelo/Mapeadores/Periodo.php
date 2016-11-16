@@ -29,7 +29,7 @@ class Periodo extends MapeadorBase
     public function todos($grupo_id = null)
     {
         $condicion = is_null($grupo_id) ? null : ['grupo_id' => $grupo_id];
-        $registros = $this->getAdaptador()->listar(self::TABLA, $condicion);
+        $registros = $this->getAdaptador()->listar(self::TABLA, $condicion, [ 'orden' ]);
 
         $todos = Coleccion::crear();
 
@@ -73,11 +73,13 @@ class Periodo extends MapeadorBase
      */
     public function guardar(ModeloPeriodo $periodo)
     {
+        $datos = $periodo->toArray();
+        unset($datos['asignaturas']);
         if (is_null($periodo->getId())) {
-            $id = $this->getAdaptador()->guardar(self::TABLA, $periodo->toArray());
+            $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
             $periodo->setId($id);
         } else {
-            $this->getAdaptador()->actualizar(self::TABLA, $periodo->toArray(), ['id' => $periodo->getId()]);
+            $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $periodo->getId()]);
         }
     }
 

@@ -15,9 +15,10 @@ export class PeriodosServicio {
 
     constructor(private http: Http) { }
 
-    crear(periodo: Periodo) {
+    crear(grupoId: number, periodo: Periodo) {
+        let datos = JSON.stringify({ grupo_id: grupoId, periodo });
         return this.http
-            .post(this.baseUrl, JSON.stringify({ periodo }), { headers: this.headers })
+            .post(this.baseUrl, datos, { headers: this.headers })
             .map((response: Response) => response.json());
     }
 

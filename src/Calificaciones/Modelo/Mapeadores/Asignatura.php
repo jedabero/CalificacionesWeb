@@ -75,6 +75,7 @@ class Asignatura extends MapeadorBase
     public function guardar(ModeloAsignatura $asignatura)
     {
         $datos = $asignatura->toArray(false);
+        unset($datos['notas']);
         if (is_null($asignatura->getId())) {
             $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
             $asignatura->setId($id);

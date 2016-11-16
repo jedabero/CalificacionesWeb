@@ -1,5 +1,5 @@
-<h2 *ngIf="!esDetalle">Periodos</h2>
-<h4 *ngIf="esDetalle">Periodos</h4>
+<h2 *ngIf="grupoId === 0">Periodos</h2>
+<h4 *ngIf="grupoId !== 0">Periodos</h4>
 <form class="form-inline form-periodo">
     <div class="form-group">
         <label for="inputNombre">Nuevo Periodo</label>
@@ -17,6 +17,6 @@
     <li class="list-group-item" *ngFor="let periodo of periodos"
         (click)="gotoDetalle(periodo)"
         [class.selected]="periodo === seleccionado">
-        <span class="badge">{{ periodo.id }}</span> {{ periodo.nombre }}
+        <span class="badge">{{ periodo.orden }}</span> {{ periodo.nombre }}
     </li>
 </ul>

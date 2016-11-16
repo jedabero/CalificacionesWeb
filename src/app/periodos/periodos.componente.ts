@@ -19,7 +19,7 @@ export class PeriodosComponente implements OnInit {
     @Input()
     periodos: Periodo[];
     @Input()
-    esDetalle = false;
+    grupoId: number;
     seleccionado: Periodo;
 
     constructor(
@@ -27,11 +27,11 @@ export class PeriodosComponente implements OnInit {
         private service: PeriodosServicio
     ) {}
     ngOnInit(): void {
-        if (this.periodos != null) {
-            this.getGrupos();
+        if (this.periodos == null) {
+            this.getPeriodos();
         }
     }
-    getGrupos(): void {
+    getPeriodos(): void {
         this.service.listar().subscribe(
             data => this.periodos = data.grupos,
             error => console.log(error)
@@ -43,7 +43,8 @@ export class PeriodosComponente implements OnInit {
     agregar(): void {
         console.log(JSON.stringify(this.nuevo));
         if (!this.nuevo.nombre) { return; }
-        this.service.crear(this.nuevo)
+        if (this.grupoId === 0) { return; }
+        this.service.crear(this.grupoId, this.nuevo)
             .subscribe(
                 data => {
                     let periodo = data.periodo;

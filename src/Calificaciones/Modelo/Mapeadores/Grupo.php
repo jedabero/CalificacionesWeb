@@ -73,11 +73,13 @@ class Grupo extends MapeadorBase
      */
     public function guardar(ModeloGrupo $grupo)
     {
+        $datos = $grupo->toArray();
+        unset($datos['periodos']);
         if (is_null($grupo->getId())) {
-            $id = $this->getAdaptador()->guardar(self::TABLA, $grupo->toArray());
+            $id = $this->getAdaptador()->guardar(self::TABLA, $datos);
             $grupo->setId($id);
         } else {
-            $this->getAdaptador()->actualizar(self::TABLA, $grupo->toArray(), ['id' => $grupo->getId()]);
+            $this->getAdaptador()->actualizar(self::TABLA, $datos, ['id' => $grupo->getId()]);
         }
     }
 

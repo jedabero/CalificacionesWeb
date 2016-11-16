@@ -152,7 +152,7 @@ class Periodo extends ModeloBase
             'nombre' => $this->nombre,
             'orden' => $this->orden,
             'grupo_id' => $this->grupo_id,
-            'asignatras' => $this->asignaturas
+            'asignaturas' => $this->asignaturas
         ]);
     }
 
