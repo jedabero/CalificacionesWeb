@@ -4,25 +4,25 @@
     <div class="form-group">
         <label for="inputValor">Nuevo Nota</label>
         <input type="text" id="inputValor" name="valor" class="form-control" placeholder="4.2"
-               [(ngModel)]="nuevo.valor" #inputValor/>
+               [(ngModel)]="nuevaNota.valor" #inputValor/>
     </div>
     <div class="form-group">
         <label for="inputPeso">Peso</label>
         <input type="text" id="inputPeso" name="peso" class="form-control" placeholder="30"
-               [(ngModel)]="nuevo.peso" #inputPeso/>
+               [(ngModel)]="nuevaNota.peso" #inputPeso/>
     </div>
     <div class="form-group">
         <label for="inputOrden">Orden</label>
         <input type="number" id="inputOrden" name="orden" class="form-control"
-               [(ngModel)]="nuevo.orden" #inputOrden/>
+               [(ngModel)]="nuevaNota.orden" #inputOrden/>
     </div>
     <button class="btn btn-primary" (click)="agregar(); inputValor.value=''; inputPeso.value=''; inputOrden.value=''">Agregar</button>
 </form>
 <ul class="list-group notas">
     <li class="list-group-item" *ngFor="let nota of notas"
         (click)="onSelect(nota)"
-        [class.selected]="nota === seleccionado">
+        [class.selected]="nota === notaSeleccionada">
         <span class="badge">{{ nota.orden }}</span> {{ nota.valor }} - {{ nota.peso }}
     </li>
 </ul>
-<nota [nota]="seleccionado"></nota>
+<nota [nota]="notaSeleccionada"></nota>

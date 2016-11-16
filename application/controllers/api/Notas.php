@@ -53,6 +53,6 @@ class Notas extends C_Controller
 
         $this->mapeador->guardar($nota);
 
-        $this->salida_json(200, [ 'success' => true, 'id' => $nota->getId(), 'asignatura'=> $nota ]);
+        $this->salida_json(200, [ 'success' => true, 'id' => $nota->getId(), 'nota'=> $nota ]);
     }
 }

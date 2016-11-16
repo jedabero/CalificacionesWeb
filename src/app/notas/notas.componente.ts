@@ -15,12 +15,12 @@ import { NotasServicio } from '../servicios/notas.servicio';
 })
 export class NotasComponente implements OnInit {
 
-    nuevo = new Nota();
+    nuevaNota = new Nota();
     @Input()
     notas: Nota[];
     @Input()
     asignaturaId: number;
-    seleccionado: Nota;
+    notaSeleccionada: Nota;
 
     constructor(
         private router: Router,
@@ -38,19 +38,19 @@ export class NotasComponente implements OnInit {
         );
     }
     onSelect(nota: Nota): void {
-        this.seleccionado = nota;
+        this.notaSeleccionada = nota;
     }
     agregar(): void {
-        console.log(JSON.stringify(this.nuevo));
-        if (this.nuevo.valor === null) { return; }
-        if (!this.nuevo.peso) { return; }
+        console.log(JSON.stringify(this.nuevaNota));
+        if (this.nuevaNota.valor === null) { return; }
+        if (!this.nuevaNota.peso) { return; }
         if (this.asignaturaId === 0) { return; }
-        this.service.crear(this.asignaturaId, this.nuevo)
+        this.service.crear(this.asignaturaId, this.nuevaNota)
             .subscribe(
                 data => {
                     let nota = data.nota;
                     this.notas.push(nota);
-                    this.seleccionado = nota;
+                    this.notaSeleccionada = nota;
                 },
                 error => console.log(error)
             )
