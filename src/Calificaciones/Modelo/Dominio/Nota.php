@@ -161,7 +161,7 @@ class Nota extends ModeloBase
         ];
 
         if ($mostrarDerivados) {
-
+            $datos['ponderado'] = $this->valorPonderado();
         }
 
         return array_merge(parent::toArray(), $datos);

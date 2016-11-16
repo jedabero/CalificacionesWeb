@@ -7,4 +7,5 @@ export class Periodo {
     nombre: string;
     orden: number;
     grupo_id: number;
+    promedio: number;
 }
