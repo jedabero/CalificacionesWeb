@@ -22,7 +22,7 @@
     <li class="list-group-item" *ngFor="let nota of notas"
         (click)="onSelect(nota)"
         [class.selected]="nota === notaSeleccionada">
-        <span class="badge">{{ nota.orden }}</span> {{ nota.valor }} - {{ nota.peso }}
+        <span class="badge">{{ nota.orden }}</span> {{ nota.valor | number:'1.2-2' }} - {{ nota.peso }}
     </li>
 </ul>
 <nota [nota]="notaSeleccionada"></nota>

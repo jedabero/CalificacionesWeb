@@ -22,6 +22,6 @@
 }
 .asignaturas .badge {
     background-color: #607D8B;
-    float: none;
-    margin-right: 1em;
+    width: 3em;
+    font-size: medium;
 }

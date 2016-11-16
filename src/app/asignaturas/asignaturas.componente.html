@@ -12,6 +12,6 @@
     <li class="list-group-item" *ngFor="let asignatura of asignaturas"
         (click)="gotoDetalle(asignatura)"
         [class.selected]="asignatura === seleccionado">
-        <span class="badge">{{ asignatura.definitiva }}</span> {{ asignatura.nombre }}
+        <span class="badge pull-right">{{ asignatura.definitiva | number:'1.2-2' }}</span> {{ asignatura.nombre }}
     </li>
 </ul>
