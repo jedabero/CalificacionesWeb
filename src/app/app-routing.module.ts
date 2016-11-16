@@ -12,8 +12,6 @@ import { HomeComponente } from './home/home.componente';
 import { GruposComponente, GrupoComponente } from './grupos/index';
 import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
-import { DataComponent } from './data.component';
-import { DetailComponent } from './detail.component';
 
 import { LoginComponente, LogoutComponente } from './login/index';
 import { RegistroComponente } from './registro/registro.componente';
@@ -40,12 +38,6 @@ const routes: Routes = [
             }, {
                 path: 'asignaturas/:id',
                 component: AsignaturaComponente
-            }, {
-                path: 'heroes',
-                component: DataComponent
-            }, {
-                path: 'detail/:id',
-                component: DetailComponent
             }
         ]
     }, {

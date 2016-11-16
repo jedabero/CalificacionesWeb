@@ -21,9 +21,6 @@ import { GruposComponente, GrupoComponente } from './grupos/index';
 import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
 import { NotasComponente, NotaComponente } from './notas/index';
-import { DataComponent } from './data.component';
-import { DetailComponent } from './detail.component';
-import { DataService } from './data.service';
 
 @NgModule({
     imports: [
@@ -43,8 +40,6 @@ import { DataService } from './data.service';
         PeriodosComponente, PeriodoComponente,
         AsignaturasComponente, AsignaturaComponente,
         NotasComponente, NotaComponente,
-        DetailComponent,
-        DataComponent
     ],
     providers: [
         AuntenticacionGuardia,
@@ -54,7 +49,6 @@ import { DataService } from './data.service';
         PeriodosServicio,
         AsignaturasServicio,
         NotasServicio,
-        DataService
     ],
     bootstrap: [ AppComponent ]
 })

@@ -1,10 +1,7 @@
 /**
  * Created by jedabero on 5/11/16.
  */
-import { Component, OnInit } from '@angular/core';
-
-import { Heroe } from '../heroe';
-import { DataService } from '../data.service';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -14,13 +11,6 @@ import { DataService } from '../data.service';
 })
 export class DashboardComponente {
 
-    titulo = "Tour de Heroes";
+    titulo = "Calificaciones";
 
-    heroes: Heroe[] = [];
-
-    constructor(private service: DataService) {}
-
-    ngOnInit(): void {
-        this.service.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5))
-    }
 }
