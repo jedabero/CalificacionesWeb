@@ -11,7 +11,7 @@
         <input type="number" id="inputOrden" name="orden" class="form-control" placeholder=""
                [(ngModel)]="nuevo.orden" #inputOrden/>
     </div>
-    <button (click)="agregar(); inputNombre.value='';inputOrden.value=''">Agregar</button>
+    <button class="btn btn-primary" (click)="agregar(); inputNombre.value='';inputOrden.value=''">Agregar</button>
 </form>
 <ul class="list-group periodos">
     <li class="list-group-item" *ngFor="let periodo of periodos"

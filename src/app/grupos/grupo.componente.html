@@ -1,12 +1,26 @@
 <div *ngIf="grupo">
     <h2>Detalles de {{ grupo.nombre }}</h2>
-    <div><label>id: </label>{{ grupo.id }}</div>
-    <div>
-        <label>nombre: </label>
-        <input type="text" [(ngModel)]="grupo.nombre" placeholder="Nombre">
-    </div>
-    <button (click)="guardar()">Save</button>
-    <button (click)="goBack()">Back</button>
-    <hr>
+    <form class="form-horizontal form-grupo">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Id</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{ grupo.id }}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNombre" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control"
+                       id="inputNombre" name="nombre" placeholder="Nombre"
+                       [(ngModel)]="grupo.nombre" #inputNombre/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" (click)="guardar()">Guardar</button>
+                <button class="btn btn-default" (click)="goBack()">Atrás</button>
+            </div>
+        </div>
+    </form>
     <periodos [periodos]="grupo.periodos" [grupoId]="grupo.id"></periodos>
 </div>
