@@ -4,12 +4,7 @@
     <input type="text" id="inputUsuario" name="usuario" class="form-control" [(ngModel)]="usuario" placeholder="Usuario" required autofocus/>
     <label for="inputContrasena" class="sr-only">Contrase&ntilde;a</label>
     <input type="password" id="inputContrasena" name="contrasena" class="form-control" [(ngModel)]="contrasena" placeholder="Contrase&ntilde;a" required/>
-    <div>
-        <label>
-            <input type="checkbox" value="Recordarme">
-            Recordarme
-        </label>
-    </div>
+    <!--div><label><input type="checkbox" value="Recordarme">Recordarme</label></div-->
     <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="cargando">Ingresar</button>
     <a [routerLink]="['/registrar']" class="btn btn-link">Registrate</a>
 </form>

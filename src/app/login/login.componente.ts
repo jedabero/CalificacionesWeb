@@ -31,10 +31,17 @@ export class LoginComponente implements OnInit {
     }
 
     login(): void {
-        this.cargando = false;
+        this.cargando = true;
         this.servicio.login(this.usuario, this.contrasena)
             .subscribe(
-                data => this.router.navigate(['/']),
+                data => {
+                    if (data.success) {
+                        this.router.navigate(['/'])
+                    } else {
+                        this.cargando = false;
+                        alert(data.mensaje); // TODO: mejorar interfaz
+                    }
+                },
                 error => {
                     console.log(error);
                     // TODO: mostrar login no exitoso
