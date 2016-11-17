@@ -1,6 +1,19 @@
 <h2>Estad&iacute;sticas</h2>
-<div class="row stats">
-    <span>Quick Stats</span>
+<div class="container">
+    <div class="row stats">
+        <span>Quick Stats</span>
+        <ul class="list-group">
+            <li class="list-group-item">
+                Grupos: <span class="badge pull-right">{{ estadisticas.grupos }}</span>
+            </li>
+            <li class="list-group-item">
+                Periodos: <span class="badge pull-right">{{ estadisticas.periodos }}</span>
+            </li>
+            <li class="list-group-item">
+                Asignaturas: <span class="badge pull-right">{{ estadisticas.asignaturas }}</span>
+            </li>
+        </ul>
+    </div>
 </div>
 <div>
     <button class="btn" (click)="gotoGrupos()">

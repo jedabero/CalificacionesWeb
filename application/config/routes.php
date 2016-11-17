@@ -76,5 +76,7 @@ foreach ($rutas as $ruta) {
     $route["api/$ruta/(:num)"]['POST'] = "api/$ruta/guardar/$1";
 }
 
+$route['api/estadisticas'] = 'api/estadisticas';
+
 $route['(:any)/(:any)'] = 'front';
 $route['(:any)'] = 'front';

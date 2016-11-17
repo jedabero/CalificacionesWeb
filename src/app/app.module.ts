@@ -17,6 +17,7 @@ import { LoginComponente, LogoutComponente } from './login/index';
 import { RegistroComponente } from './registro/registro.componente';
 
 import { HomeComponente } from './home/home.componente';
+import { EstadisticasServicio } from './home/estadisticas.servicio';
 import { GruposComponente, GrupoComponente } from './grupos/index';
 import { PeriodosComponente, PeriodoComponente } from './periodos/index';
 import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
@@ -45,6 +46,7 @@ import { NotasComponente, NotaComponente } from './notas/index';
         AuntenticacionGuardia,
         AutenticacionServicio,
         UsuariosServicio,
+        EstadisticasServicio,
         GruposServicio,
         PeriodosServicio,
         AsignaturasServicio,
