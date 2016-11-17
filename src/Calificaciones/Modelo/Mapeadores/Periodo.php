@@ -23,10 +23,11 @@ class Periodo extends MapeadorBase
 
     /**
      * @param mixed $grupo_id
+     * @param boolean $cargar
      *
      * @return Coleccion|null
      */
-    public function todos($grupo_id = null)
+    public function todos($grupo_id = null, $cargar = true)
     {
         $condicion = is_null($grupo_id) ? null : ['grupo_id' => $grupo_id];
         $registros = $this->getAdaptador()->listar(self::TABLA, $condicion, [ 'orden' ]);
@@ -37,8 +38,17 @@ class Periodo extends MapeadorBase
             return $todos;
         }
 
+        $mapeador = null;
+        if ($cargar) {
+            $mapeador = new MapeadorAsignatura($this->getAdaptador());
+        }
+
         foreach ($registros as $registro) {
-            $todos[] = $this->mapea($registro);
+            $periodo = $this->mapea($registro);
+            if ($cargar) {
+                $periodo->setAsignaturas($mapeador->todos($periodo->getId()));
+            }
+            $todos[] = $periodo;
         }
         return $todos;
     }
