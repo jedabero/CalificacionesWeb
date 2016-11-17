@@ -3,3 +3,4 @@
  */
 export { PeriodosComponente } from './periodos.componente';
 export { PeriodoComponente } from './periodo.componente';
+export { GraficoPeriodosComponente } from './grafico-periodos.componente';

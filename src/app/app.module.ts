@@ -5,6 +5,8 @@ import { HttpModule }    from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+
 import { AppComponent } from './app.component';
 import {
     AutenticacionServicio, UsuariosServicio, GruposServicio,
@@ -19,7 +21,7 @@ import { RegistroComponente } from './registro/registro.componente';
 import { HomeComponente } from './home/home.componente';
 import { EstadisticasServicio } from './home/estadisticas.servicio';
 import { GruposComponente, GrupoComponente } from './grupos/index';
-import { PeriodosComponente, PeriodoComponente } from './periodos/index';
+import { PeriodosComponente, PeriodoComponente, GraficoPeriodosComponente } from './periodos/index';
 import { AsignaturasComponente, AsignaturaComponente } from './asignaturas/index';
 import { NotasComponente, NotaComponente } from './notas/index';
 
@@ -28,7 +30,8 @@ import { NotasComponente, NotaComponente } from './notas/index';
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ChartsModule
     ],
     declarations: [
         AppComponent,
@@ -38,7 +41,7 @@ import { NotasComponente, NotaComponente } from './notas/index';
         RegistroComponente,
         HomeComponente,
         GruposComponente, GrupoComponente,
-        PeriodosComponente, PeriodoComponente,
+        PeriodosComponente, PeriodoComponente, GraficoPeriodosComponente,
         AsignaturasComponente, AsignaturaComponente,
         NotasComponente, NotaComponente,
     ],

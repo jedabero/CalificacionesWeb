@@ -48,7 +48,7 @@ gulp.task('bundle:vendor', [ 'copy:vendor' ], function () {
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/systemjs/dist/system.src.js',
-        'node_modules/cart.js/dist/Chart.bundle.min.js',
+        'node_modules/chart.js/dist/Chart.bundle.min.js',
         'src/systemjs.config.js'
     ])
     .pipe(concat('vendors.js'))
@@ -62,8 +62,8 @@ gulp.task('copy:vendor', function () {
     gulp.src('node_modules/rxjs/**/*')
         .pipe(gulp.dest('public/js/lib/rxjs'));
 
-    return gulp.src('node_modules/ng2-charts/bundles/*')
-        .pipe(gulp.dest('public/js/lib/ng2-charts/bundles'));
+    gulp.src('node_modules/ng2-charts/**/*')
+        .pipe(gulp.dest('public/js/lib/ng2-charts'));
 
     return gulp.src('node_modules/angular-in-memory-web-api/bundles/*')
     .pipe(gulp.dest('public/js/lib/angular-in-memory-web-api/bundles'));
