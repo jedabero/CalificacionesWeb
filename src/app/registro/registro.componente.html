@@ -1,4 +1,4 @@
-<form class="form-registro" name="form" (ngSubmit)="formulario.form.valid && registrar()" #formulario="ngForm" novalidate>
+<form class="form-registro" name="form" (ngSubmit)="formulario.form.valid && registrar()" #formulario="ngForm" validate>
     <h2 class="form-registro-cabecera">Reg&iacute;strate</h2>
     <label for="inputIdentificacion" class="sr-only">Identificaci&oacute;n</label>
     <input type="text" id="inputIdentificacion" name="identificacion" class="form-control" [(ngModel)]="usuario.identificacion" placeholder="Identificaci&oacute;n" required autofocus/>

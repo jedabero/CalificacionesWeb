@@ -50,4 +50,8 @@ export class AsignaturaComponente implements OnInit {
     goBack(): void {
         this.location.back();
     }
+
+    actualizar() {
+        this.get(this.asignatura.id);
+    }
 }

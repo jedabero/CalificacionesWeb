@@ -25,4 +25,4 @@
         <span class="badge">{{ nota.orden }}</span> {{ nota.valor | number:'1.2-2' }} - {{ nota.peso }}
     </li>
 </ul>
-<nota [nota]="notaSeleccionada"></nota>
+<nota [nota]="notaSeleccionada" (actualizar)="actualizarComponente()"></nota>

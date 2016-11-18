@@ -1,4 +1,4 @@
-<form class="form-ingreso" name="form" (ngSubmit)="formulario.form.valid && login()" #formulario="ngForm" novalidate>
+<form class="form-ingreso" name="form" (ngSubmit)="formulario.form.valid && login()" #formulario="ngForm">
     <h2 class="form-ingreso-cabecera">Por favor inicie sesi&oacute;n</h2>
     <label for="inputUsuario" class="sr-only">Usuario</label>
     <input type="text" id="inputUsuario" name="usuario" class="form-control" [(ngModel)]="usuario" placeholder="Usuario" required autofocus/>

@@ -1,7 +1,7 @@
 /**
  * Created by jedabero on 15/11/16.
  */
-import { Component, Input } from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 import { Location } from '@angular/common';
 
 import { Nota } from '../modelos/nota';
@@ -17,6 +17,9 @@ export class NotaComponente {
     @Input()
     nota: Nota;
 
+    @Output()
+    actualizar = new EventEmitter();
+
     constructor(
         private service: NotasServicio,
         private location: Location
@@ -24,7 +27,10 @@ export class NotaComponente {
 
     guardar() {
         this.service.actualizar(this.nota).subscribe(
-            data => console.log(data), // TODO: actualizar asignatura
+            data => {
+                console.log(data)
+                this.actualizar.next();
+            },
             error => console.log(error)
         );
     }

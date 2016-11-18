@@ -29,7 +29,8 @@ export class RegistroComponente {
             .subscribe(
                 data => this.router.navigate(['/login']),
                 error => {
-                    // TODO: mostrar login no exitoso
+                    console.log(error);
+                    alert("No se pudo realizar el registro.");
                     this.cargando = false;
                 }
             )
