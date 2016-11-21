@@ -41,6 +41,9 @@ codeigniter/
 └── tsconfig.json
 ```
 
+Revisa el archivo `gulpfile.js` para conocer sobre las tareas necesarias para la compilación del código del front.
+
+
 ## Requerimientos
 
 * PHP 5.3.7 o mayor
